@@ -23,10 +23,11 @@ body {
 }
 
 .form-info .info {
-    margin-right: 300px;
+    margin-right: 200px;
     margin-top: 50px;
     text-align: center;
     pointer-events: none;
+    text-shadow: 0 0 19px #ec6802;
 }
 
 .form-info .info .h {
@@ -83,9 +84,11 @@ body {
     font-size: 15px;
 }
 
-.form-info .form .check-form .recordarme{
-    color: #ec6802;
-    
+.form-info .form .ver-pass{
+    margin-right: 170px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 15px;
 }
 
 .form-info .form button {
