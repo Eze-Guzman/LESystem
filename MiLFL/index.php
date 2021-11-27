@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+    <script src="assets/js/visor-pass.js"></script>
     <title>MiLFL</title>
 </head>
 <body>
@@ -28,11 +29,11 @@
 
             <h4>Bienvenido a MiLFL</h4>
 
-            <form action="assets/php/login.php" method="POST">
+            <form action="assets/php/login.php" method="POST" onclick="hideOrShowpassword()">
 
                 <input type="text" name="dni" id="dni" placeholder="Ingrese su DNI">
                 <input type="password" name="pass" id="pass"
-                placeholder="Ingrese su Contraseña" autocomplete="new-password">
+                placeholder="Ingrese su Contraseña">
 
                 <div class="check-form">
                     <input type="checkbox" name="recordarme" id="recordarme"> Recordarme

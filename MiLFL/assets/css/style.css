@@ -45,7 +45,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 0 19px;
     width: 300px;
-    height: 370px;
+    height: 400px;
 }
 
 .form-info .form a {
@@ -80,14 +80,13 @@ body {
 .form-info .form .check-form{
     margin-right: 170px;
     margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     font-size: 15px;
 }
 
 .form-info .form .ver-pass{
-    margin-right: 170px;
-    margin-top: 25px;
     margin-bottom: 25px;
+    margin-right: 119px;
     font-size: 15px;
 }
 
