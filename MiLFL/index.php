@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+
     <script src="assets/js/visor-pass.js"></script>
     <title>MiLFL</title>
 </head>
@@ -47,10 +48,17 @@
 
             </form>
 
-            <a id="popup_datos" href="#">¿Olvidaste tus datos?</a>
+            <a id="open" href="#">¿Olvidaste tus datos?</a>
 
         </div>
 
+    </div>
+
+    <div class="modal-container" id="modal-container">
+        <div class="modal">
+            <h1>Recuperación de Cuenta</h1>
+            <h5>Ingresa el dato que recuerdes</h5>
+        </div>
     </div>
 
 
