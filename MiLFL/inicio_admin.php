@@ -40,11 +40,11 @@
 
                 <div class="carousel center-align">
 
-                    <a href="" class="carousel-item">
+                    <a href="admin/agregar_mod_usuarios.php" class="carousel-item">
                         <div>
                             <h2 class="subtitulo">Sección</h2>
                             <div class="linea-division"></div>
-                            <p class="seccion">Agregar Usuarios</p>
+                            <p class="seccion">Agregar o Modificar Usuarios</p>
                             <img src="assets/img/logo.png" alt="">
                         </div>
                     </a>
@@ -53,7 +53,7 @@
                     <div>
                         <h2 class="subtitulo">Sección</h2>
                         <div class="linea-division"></div>
-                        <p class="seccion">Modificar Datos</p>
+                        <p class="seccion">Usuarios Registrados</p>
                         <img src="assets/img/logo.png" alt="">
                     </div>
                     </a>

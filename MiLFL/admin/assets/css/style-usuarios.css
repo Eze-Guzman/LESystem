@@ -1,0 +1,65 @@
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ff9747;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#container h1 {
+    font-size: 35px;
+    display: inline-block;
+}
+
+.btn_new {
+    display: inline-block;
+    background: #ec6802;
+    color: #fff;
+    padding: 5px 25px;
+    border-radius: 4px;
+    margin: 20px;
+    text-decoration: none;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 12pt;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+}
+
+table th {
+    text-align: center;
+    padding: 10px;
+    background: #c81f13;
+    color: #fff;
+}
+
+table tr:nth-child(odd) {
+    background: #ffb47b;
+}
+
+table td {
+    padding: 10px;
+    text-align: center;
+}
+
+
+.link_edit {
+    color: #014ba0;
+    text-transform: none;
+}
+
+.link_delete {
+    color: #ff4444;
+    text-transform: none;
+}
