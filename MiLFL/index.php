@@ -1,5 +1,15 @@
+<?php
+
+    session_start();
+
+    if(isset($_SESSION['users'])) {
+        header("location: inicio.php");
+    }
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
-
+    <script src="https://kit.fontawesome.com/b4fe7d1adf.js" crossorigin="anonymous"></script>
     <script src="assets/js/visor-pass.js"></script>
     <title>MiLFL</title>
 </head>
@@ -54,13 +64,23 @@
 
     </div>
 
-    <div class="modal-container" id="modal-container">
-        <div class="modal">
-            <h1>Recuperación de Cuenta</h1>
-            <h5>Ingresa el dato que recuerdes</h5>
+        <div class="modal-container" id="modal_container">
+            <div class="modal">
+                <h1>Recuperación de Cuenta</h1>
+                <h5>Ingresa el dato que recuerdes</h5>
+                <form action="">
+                    <select name="" id="">
+                        <option value="dni">DNI</option>
+                        <option value="usuario">Correo Electrónico</option>
+                    </select>
+                    <i class="icon fas fa-arrow-right"></i>
+                    <input type="text" name="" id="">
+                    <button type="submit" id="close">Enviar</button>
+                </form>
+            </div>
         </div>
-    </div>
 
+    <script src="assets/js/close.js"></script>
 
 </body>
 </html>

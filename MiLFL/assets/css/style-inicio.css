@@ -2,21 +2,19 @@
     margin: 0;
     padding: 0;
     outline: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
 body {
     min-height: 100vh;
-    background-image: linear-gradient(-45deg, #000000 50%, #c81f13 50%);
+    background-image: linear-gradient(-45deg, #ec6802 50%, #c81f13 50%);
     font-family: 'Raleway', sans-serif;
 }
 
 .titulo {
     font-size: 40px;
     font-family: 'Dancing Script', cursive;
-    margin-bottom: 40px;
+    margin-bottom: -20px;
     color: #fff;
 }
 
@@ -24,7 +22,7 @@ body {
     margin: 0;
     color: #000;
     display: inline;
-    font-size: 50px;
+    font-size: 35px;
     font-weight: 500;
     text-transform: uppercase;
     display: flex;
@@ -34,7 +32,7 @@ body {
 .seccion { 
     color: #fff;
     margin: 7px 0;
-    font-size: 50px;
+    font-size: 35px;
     font-weight: 600;
     text-shadow: 2px 2px 1px rgba(0,0,0,0.7);
     font-family: 'Dancing Script', cursive;
@@ -46,21 +44,23 @@ body {
 .linea-division {
     width: 100%;
     height: 2px;
-    background-color: #36221c;
-    margin-right: 100px;
+    background-color: #ec6802;
 }
 
 .carousel {
     min-height: 500px;
 }
 
-.carousel .carosuel-item {
+.carousel .carousel-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     user-select: none;
-    width: 500px;
-    height: 500px;
+    background: #fff;
+    width: 350px;
+    height: 350px;
+    border-radius: 15px;
 }
 
 .carousel .carousel-item img {
@@ -71,12 +71,11 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
-    border-radius: 20px;
 }
 
-.carousel .indicators .indicators-item {
+.carousel .indicators .indicator-item {
     border-radius: 0;
     transform: rotate(45deg);
     margin: 0 15px;
-    background: #36221c;
+    background: #c81f13;
 }

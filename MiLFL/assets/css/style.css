@@ -15,7 +15,7 @@ body {
     display: flex;
     font-family: 'Roboto', sans-serif;
     justify-content: center;
-    padding-top: 19vh;
+    padding-top: 15vh;
 }
 
 .form-info img {
@@ -105,4 +105,66 @@ body {
 .form-info .form button:hover {
     transition: .5s;
     background-color: #c81f13;
+}
+
+.modal-container {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    background-color: #e5e5e58f;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.show {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.modal {
+    background-color: #ec6802;
+    width: 700px;
+    max-width: 100%;
+    padding: 30px 50px;
+    border-radius: 15px;
+    box-shadow: 0 0px 15px rgba(0, 0, 0, 0.7);
+}
+
+.modal h1,
+.modal h5 {
+    margin-bottom: 20px;
+}
+
+.modal form select,
+.modal form input {
+    width: 250px;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border-style: none;
+    margin-bottom: 20px;
+}
+
+.modal form .icon {
+    padding: 0 20px 0 20px;
+}
+
+.modal form #close {
+    letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 25px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #c81f13;
+    color: #fff;
+    cursor: pointer;
 }
