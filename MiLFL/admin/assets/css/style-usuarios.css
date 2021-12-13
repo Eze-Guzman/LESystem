@@ -28,6 +28,12 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 4px;
     margin: 20px;
     text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn_new:hover {
+    transition-duration: .5s;
+    background: #c81f13;
 }
 
 table {
@@ -56,10 +62,12 @@ table td {
 
 .link_edit {
     color: #014ba0;
-    text-transform: none;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .link_delete {
     color: #ff4444;
-    text-transform: none;
+    text-decoration: none;
+    font-weight: bold;
 }

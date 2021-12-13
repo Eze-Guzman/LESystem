@@ -44,7 +44,7 @@
 
                 <input type="text" name="dni" id="dni" placeholder="Ingrese su DNI">
                 <input type="password" name="pass" id="pass"
-                placeholder="Ingrese su Contraseña">
+                placeholder="Ingrese su Contraseña" autocomplete="new-password">
 
                 <div class="check-form">
                     <input type="checkbox" name="recordarme" id="recordarme"> Recordarme

@@ -53,15 +53,6 @@
                     <div>
                         <h2 class="subtitulo">Sección</h2>
                         <div class="linea-division"></div>
-                        <p class="seccion">Usuarios Registrados</p>
-                        <img src="assets/img/logo.png" alt="">
-                    </div>
-                    </a>
-
-                    <a href="" class="carousel-item">
-                    <div>
-                        <h2 class="subtitulo">Sección</h2>
-                        <div class="linea-division"></div>
                         <p class="seccion">Biblioteca</p>
                         <img src="assets/img/logo.png" alt="">
                     </div>

@@ -23,7 +23,7 @@
     <section id="container">    
 
     <h1>Lista de Usuarios</h1>
-    <a href="#" class="btn_new">Agregar Usuario</a>
+    <a href="registrar_usuario.php" class="btn_new">Agregar Usuario</a>
 
         <table>
             <tr>
@@ -38,7 +38,7 @@
             <?php
 
                 $query = mysqli_query($conexion, "SELECT u.id, u.nombre, u.dni, u.correo, r.rol FROM users u 
-                INNER JOIN rol r ON u.rol_id = r.id");
+                INNER JOIN rol r ON u.rol_id = r.idrol");
 
                 $result = mysqli_num_rows($query);
                 if($result > 0){
@@ -53,7 +53,8 @@
                             <td><?php echo $data['correo'] ?></td>
                             <td><?php echo $data['rol'] ?></td>
                             <td>
-                                <a href="" class="link_edit">Editar</a>
+                                <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
+                                class="link_edit">Editar</a>
                                 |
                                 <a href="" class="link_delete">Eliminar</a>
                             </td>
