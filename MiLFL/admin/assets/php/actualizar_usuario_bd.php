@@ -1,8 +1,6 @@
 <?php
 
     include "../../../assets/php/conexion_bd.php";
-    
-
 
     $id = $_POST['id'];
     $nombre = $_POST['nombre'];

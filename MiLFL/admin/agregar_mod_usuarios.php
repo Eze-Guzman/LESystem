@@ -23,7 +23,7 @@
     <section id="container">    
 
     <h1>Lista de Usuarios</h1>
-    <a href="registrar_usuario.php" class="btn_new">Agregar Usuario</a>
+    <a href="index_registro.php" class="btn_new">Agregar Usuario</a>
 
         <table>
             <tr>
@@ -56,7 +56,8 @@
                                 <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
                                 class="link_edit">Editar</a>
                                 |
-                                <a href="" class="link_delete">Eliminar</a>
+                                <a href="assets/php/eliminar_usuario.php?id=<?php echo $data['id'] ?>"
+                                 class="link_delete">Eliminar</a>
                             </td>
                         </tr>
 
@@ -70,6 +71,8 @@
 
         </table>
     </section>
+
+    <script src="assets/js/eliminacion.js"></script>
 
 </body>
 </html>

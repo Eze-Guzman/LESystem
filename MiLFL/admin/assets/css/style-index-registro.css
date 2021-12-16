@@ -1,0 +1,36 @@
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ff9747;
+    font-family: 'Roboto', sans-serif;
+}
+
+.indice-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10vh;
+}
+
+.indice-container .indice a {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #000;
+    border: 1px solid #010101;
+    padding: 20px 30px 20px 30px;
+    margin-left: 400px;
+    margin-right: 400px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.indice-container .indice a:hover {
+    transition-duration: .5s;
+    background-color: #c81f13;
+}
