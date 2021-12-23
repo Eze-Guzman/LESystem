@@ -16,7 +16,7 @@
     <div class="form-container">
         <h2>Agregar usuario - PRECEPTOR</h2>
 
-        <form action="../assets/php/registro_usuario_bd.php" method="POST">
+        <form action="../assets/php/registro_preceptor_bd.php" method="POST">
             <label for="">Nombre</label>
             <input type="text" placeholder="Nombre Completo" name="nombre">
             <label for="">DNI</label>
@@ -26,11 +26,6 @@
             <label for="">Contraseña</label>
             <input type="pass" name="pass" id="" placeholder="Contraseña">
             <input type="hidden" name="rol_id" value="5">
-            <div class="checkboxes">
-                <label for="">1°Año</label>
-                <input type="checkbox" name="curso" id="">
-            </div>
-            
             <button>Agregar</button>
         </form>
 

@@ -16,7 +16,7 @@
     <div class="form-container">
         <h2>Agregar usuario - ADMIN</h2>
 
-        <form action="../assets/php/registro_usuario_bd.php" method="POST">
+        <form action="../assets/php/registro_admin_bd.php" method="POST">
             <label for="">Nombre</label>
             <input type="text" placeholder="Nombre Completo" name="nombre">
             <label for="">DNI</label>

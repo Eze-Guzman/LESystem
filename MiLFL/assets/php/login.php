@@ -6,35 +6,53 @@
 
     $dni = $_POST['dni'];
     $pass = $_POST['pass'];
-    $pass = hash('sha512', $pass);
+    //$pass = hash('sha512', $pass);
 
-    $validar_login = mysqli_query($conexion, "SELECT * FROM users WHERE dni='$dni'
+    $validar_login_administrador = mysqli_query($conexion, "SELECT * FROM administradores WHERE dni='$dni'
+    and pass='$pass'");
+    $validar_login_directivo = mysqli_query($conexion, "SELECT * FROM directivos WHERE dni='$dni'
+    and pass='$pass'");
+    $validar_login_profesor = mysqli_query($conexion, "SELECT * FROM profesores WHERE dni='$dni'
+    and pass='$pass'");
+    $validar_login_preceptor = mysqli_query($conexion, "SELECT * FROM preceptores WHERE dni='$dni'
+    and pass='$pass'");
+    $validar_login_alumno = mysqli_query($conexion, "SELECT * FROM alumnos WHERE dni='$dni'
     and pass='$pass'");
 
-    $filas = mysqli_fetch_array($validar_login);
+    $filas_administrador = mysqli_fetch_array($validar_login_administrador);
+    $filas_directivo = mysqli_fetch_array($validar_login_directivo);
+    $filas_profesor = mysqli_fetch_array($validar_login_profesor);
+    $filas_preceptor = mysqli_fetch_array($validar_login_preceptor);
+    $filas_alumno = mysqli_fetch_array($validar_login_alumno);
 
-    if(isset($filas['rol_id']) == 1){ //Ingreso Administrador
+    if(isset($filas_administrador['rol_id']) == 1){ //Ingreso Administrador
         
-        $_SESSION['users'] = $dni;
+        $_SESSION['administradores'] = $dni;
         header ("location: ../../inicio_admin.php");
         exit;
 
-    }elseif(isset($filas['rol_id']) == 2){ //Ingreso Docente
+    }elseif(isset($filas_docente['rol_id']) == 2){ //Ingreso Docente
 
-        $_SESSION['users'] = $dni;
-        header ("location: ../../inicio_docente.php");
+        $_SESSION['profesores'] = $dni;
+        header ("location: ../../inicio_profesor.php");
         exit;
 
-    }elseif(isset($filas['rol_id']) == 3){ //Ingreso Estudiante
+    }elseif(isset($filas_alumno['rol_id']) == 3){ //Ingreso Estudiante
 
-        $_SESSION['users'] = $dni;
+        $_SESSION['alumnos'] = $dni;
         header ("location: ../../inicio_alumno.php");
         exit;
 
-    }elseif(isset($filas['rol_id']) == 4){ //Ingreso Director
+    }elseif(isset($filas_directivo['rol_id']) == 4){ //Ingreso Director
         
-        $_SESSION['users'] = $dni;
+        $_SESSION['directivo'] = $dni;
         header ("location: ../../inicio_director.php");
+        exit;
+
+    }elseif(isset($filas['rol_id']) == 5){ //Ingreso Preceptor/a
+
+        $_SESSION['preceptores'] = $dni;
+        header ("location: ../../inicio_preceptor.php");
         exit;
 
     }else{

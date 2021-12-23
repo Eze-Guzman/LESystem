@@ -12,17 +12,17 @@
     
     $rol = $_POST['rol_id'];
 
-    $query = "INSERT INTO users (nombre, dni, correo, pass, rol_id) 
-    VALUES ('$nombre', '$dni', '$correo', '$pass', '$rol')";
+    $query = "INSERT INTO profesores (nombre_completo, dni, pass, correo, rol_id) 
+    VALUES ('$nombre', '$dni', '$pass', '$correo', '$rol')";
 
     //Verificación de DNI del Usuario para que el mismo no se repita en la BBDD
-    $verificar_dni = mysqli_query($conexion, "SELECT * FROM users WHERE dni = '$dni'");
+    $verificar_dni = mysqli_query($conexion, "SELECT * FROM profesores WHERE dni = '$dni'");
 
     if(mysqli_num_rows($verificar_dni) > 0) {
         echo '
             <script>
                 alert("Este dni ya está registrado, intenta con otro diferente");
-                window.location = "../../registrar_usuario.php";
+                window.location = "../../registros/registro_profesor.php";
             </script>
         ';
         exit();

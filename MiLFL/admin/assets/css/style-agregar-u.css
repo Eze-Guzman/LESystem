@@ -64,8 +64,3 @@ form input[type='submit'] {
 .notItemOne option:first-child{
     display: none;
 }
-
-.checkboxes input[type='checkbox'],
-.checkboxes label {
-    margin-top: 30px;
-}

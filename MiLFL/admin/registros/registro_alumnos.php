@@ -14,9 +14,9 @@
 <body>
     
     <div class="form-container">
-        <h2>Agregar usuario - DOCENTE</h2>
+        <h2>Agregar usuario - ESTUDIANTE</h2>
 
-        <form action="../assets/php/registro_usuario_bd.php" method="POST">
+        <form action="../assets/php/registro_estudiante_bd.php" method="POST">
             <label for="">Nombre</label>
             <input type="text" placeholder="Nombre Completo" name="nombre">
             <label for="">DNI</label>
@@ -25,7 +25,7 @@
             <input type="email" name="correo" id="" placeholder="Correo Electrónico">
             <label for="">Contraseña</label>
             <input type="pass" name="pass" id="" placeholder="Contraseña">
-            <input type="hidden" name="rol_id" value="2">
+            <input type="hidden" name="rol_id" value="3">
             <button>Agregar</button>
         </form>
 

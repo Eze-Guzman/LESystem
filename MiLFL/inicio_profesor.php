@@ -2,7 +2,7 @@
 
     session_start();
 
-    if(!isset($_SESSION['users'])) {
+    if(!isset($_SESSION['profesores'])) {
         echo '
             <script>
                 alert("Por favor, inicia sesión");
