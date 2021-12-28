@@ -10,10 +10,11 @@
     //Encriptamiento de Contraseña
     $pass = hash('sha512', $pass);
     
+    $curso_id = $_POST['curso_id'];
     $rol = $_POST['rol_id'];
 
-    $query = "INSERT INTO alumnos (nombre_completo, dni, pass, correo, rol_id) 
-    VALUES ('$nombre', '$dni', '$pass', '$correo', '$rol')";
+    $query = "INSERT INTO alumnos (nombre_completo, dni, pass, correo, curso, rol_id) 
+    VALUES ('$nombre', '$dni', '$pass', '$correo', '$curso_id', '$rol')";
 
     //Verificación de DNI del Usuario para que el mismo no se repita en la BBDD
     $verificar_dni = mysqli_query($conexion, "SELECT * FROM alumnos WHERE dni = '$dni'");

@@ -37,32 +37,158 @@
 
             <?php
 
-                $query = mysqli_query($conexion, "SELECT u.id, u.nombre, u.dni, u.correo, r.rol FROM users u 
+                $query_admin = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
+                FROM administradores u 
                 INNER JOIN rol r ON u.rol_id = r.idrol");
 
-                $result = mysqli_num_rows($query);
-                if($result > 0){
+                $query_prof = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
+                FROM profesores u 
+                INNER JOIN rol r ON u.rol_id = r.idrol");
 
-                    while ($data = mysqli_fetch_array($query)) {
+                $query_alum = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
+                FROM alumnos u 
+                INNER JOIN rol r ON u.rol_id = r.idrol");
 
-                    ?>
-                        <tr>
-                            <td><?php echo $data['id'] ?></td>
-                            <td><?php echo $data['nombre'] ?></td>
-                            <td><?php echo $data['dni'] ?></td>
-                            <td><?php echo $data['correo'] ?></td>
-                            <td><?php echo $data['rol'] ?></td>
-                            <td>
-                                <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
-                                class="link_edit">Editar</a>
-                                |
-                                <a href="assets/php/eliminar_usuario.php?id=<?php echo $data['id'] ?>"
-                                 class="link_delete">Eliminar</a>
-                            </td>
-                        </tr>
+                $query_dir = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
+                FROM directivos u 
+                INNER JOIN rol r ON u.rol_id = r.idrol");
 
-                    <?php
+                $query_prece = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
+                FROM preceptores u 
+                INNER JOIN rol r ON u.rol_id = r.idrol");
+
+                $result_admin = mysqli_num_rows($query_admin);
+                $result_prof = mysqli_num_rows($query_prof);
+                $result_alum = mysqli_num_rows($query_alum);
+                $result_dir = mysqli_num_rows($query_dir);
+                $result_prece = mysqli_num_rows($query_prece);
+                if($result_admin > 0){
+
+                    while ($data = mysqli_fetch_array($query_admin)) {
+
+                        ?>
+                            <tr>
+                                <td><?php echo $data['id'] ?></td>
+                                <td><?php echo $data['nombre_completo'] ?></td>
+                                <td><?php echo $data['dni'] ?></td>
+                                <td><?php echo $data['correo'] ?></td>
+                                <td><?php echo $data['rol'] ?></td>
+                                <td>
+                                    <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
+                                    class="link_edit">Editar</a>
+                                    |
+                                    <a href="assets/php/eliminar_admin.php?id=<?php echo $data['id'] ?>"
+                                     class="link_delete">Eliminar</a>
+                                </td>
+                            </tr>
+    
+                        <?php
+
+                if($result_prof > 0) {
+
+                    while ($data = mysqli_fetch_array($query_prof)) {
+
+                        ?>
+                            <tr>
+                                <td><?php echo $data['id'] ?></td>
+                                <td><?php echo $data['nombre_completo'] ?></td>
+                                <td><?php echo $data['dni'] ?></td>
+                                <td><?php echo $data['correo'] ?></td>
+                                <td><?php echo $data['rol'] ?></td>
+                                <td>
+                                    <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
+                                    class="link_edit">Editar</a>
+                                    |
+                                    <a href="assets/php/eliminar_profesores.php?id=<?php echo $data['id'] ?>"
+                                     class="link_delete">Eliminar</a>
+                                </td>
+                            </tr>
+    
+                        <?php
+
+                if($result_alum > 0) {
+
+                    while ($data = mysqli_fetch_array($query_alum)) {
+
+                        ?>
+                            <tr>
+                                <td><?php echo $data['id'] ?></td>
+                                <td><?php echo $data['nombre_completo'] ?></td>
+                                <td><?php echo $data['dni'] ?></td>
+                                <td><?php echo $data['correo'] ?></td>
+                                <td><?php echo $data['rol'] ?></td>
+                                <td>
+                                    <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
+                                    class="link_edit">Editar</a>
+                                    |
+                                    <a href="assets/php/eliminar_alumnos.php?id=<?php echo $data['id'] ?>"
+                                     class="link_delete">Eliminar</a>
+                                </td>
+                            </tr>
+    
+                        <?php
+
+                if($result_dir > 0) {
+
+                    while ($data = mysqli_fetch_array($query_dir)) {
+
+                        ?>
+                            <tr>
+                                <td><?php echo $data['id'] ?></td>
+                                <td><?php echo $data['nombre_completo'] ?></td>
+                                <td><?php echo $data['dni'] ?></td>
+                                <td><?php echo $data['correo'] ?></td>
+                                <td><?php echo $data['rol'] ?></td>
+                                <td>
+                                    <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
+                                    class="link_edit">Editar</a>
+                                    |
+                                    <a href="assets/php/eliminar_directivos.php?id=<?php echo $data['id'] ?>"
+                                     class="link_delete">Eliminar</a>
+                                </td>
+                            </tr>
+    
+                        <?php
+
+                if($result_prece > 0) {
+
+                    while ($data = mysqli_fetch_array($query_prece)) {
+
+                        ?>
+                            <tr>
+                                <td><?php echo $data['id'] ?></td>
+                                <td><?php echo $data['nombre_completo'] ?></td>
+                                <td><?php echo $data['dni'] ?></td>
+                                <td><?php echo $data['correo'] ?></td>
+                                <td><?php echo $data['rol'] ?></td>
+                                <td>
+                                    <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
+                                    class="link_edit">Editar</a>
+                                    |
+                                    <a href="assets/php/eliminar_preceptores.php?id=<?php echo $data['id'] ?>"
+                                     class="link_delete">Eliminar</a>
+                                </td>
+                            </tr>
+    
+                        <?php
+
                     }
+
+                    }
+
+                    }
+
+                    }
+
+                    }
+
+                }
+
+                }
+
+                }
+
+                }
 
                 }
 

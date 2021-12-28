@@ -22,7 +22,7 @@
             <a href="registros/registro_admin.php">Cuenta de Administrador</a>
             <a href="registros/registro_directivo.php">Cuenta de Directivo</a>
             <a href="registros/registro_preceptor.php">Cuenta de Preceptor</a>
-            <a href="registros/registro_docente.php">Cuenta de Docente</a>
+            <a href="registros/registro_profesor.php">Cuenta de Docente</a>
             <a href="registros/registro_alumnos.php">Cuenta de Estudiante</a>            
 
         </div>

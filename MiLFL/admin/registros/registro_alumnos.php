@@ -16,7 +16,7 @@
     <div class="form-container">
         <h2>Agregar usuario - ESTUDIANTE</h2>
 
-        <form action="../assets/php/registro_estudiante_bd.php" method="POST">
+        <form action="../assets/php/registro_alumno_bd.php" method="POST">
             <label for="">Nombre</label>
             <input type="text" placeholder="Nombre Completo" name="nombre">
             <label for="">DNI</label>
@@ -25,6 +25,16 @@
             <input type="email" name="correo" id="" placeholder="Correo Electrónico">
             <label for="">Contraseña</label>
             <input type="pass" name="pass" id="" placeholder="Contraseña">
+            <label for="">Curso</label>
+            <select name="curso_id" id="">
+                <option value="0">---</option>
+                <option value="1">1° Año</option>
+                <option value="2">2° Año</option>
+                <option value="3">3° Año</option>
+                <option value="4">4° Año</option>
+                <option value="5">5° Año</option>
+                <option value="6">6° Año</option>
+            </select>
             <input type="hidden" name="rol_id" value="3">
             <button>Agregar</button>
         </form>
