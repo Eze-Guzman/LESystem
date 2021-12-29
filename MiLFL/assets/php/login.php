@@ -6,8 +6,10 @@
 
     $dni = $_POST['dni'];
     $pass = $_POST['pass'];
-    //$pass = hash('sha512', $pass);
 
+    //Encriptación de Contraseña, ENCRIPTACIÓN TIPO '512'
+    $pass = hash('sha512', $pass);
+    
     $validar_login_administrador = mysqli_query($conexion, "SELECT * FROM administradores WHERE dni='$dni'
     and pass='$pass'");
     $validar_login_directivo = mysqli_query($conexion, "SELECT * FROM directivos WHERE dni='$dni'

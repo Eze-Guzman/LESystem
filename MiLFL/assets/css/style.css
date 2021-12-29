@@ -107,6 +107,8 @@ body {
     background-color: #c81f13;
 }
 
+/* Diseño realizado para el Modal de Recuperación de Contraseña */
+
 .modal-container {
     font-family: 'Roboto', sans-serif;
     display: flex;

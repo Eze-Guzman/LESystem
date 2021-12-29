@@ -1,13 +1,3 @@
-<?php
-
-    session_start();
-
-    if(isset($_SESSION['users'])) {
-        header("location: inicio.php");
-    }
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,6 +14,8 @@
     <title>MiLFL</title>
 </head>
 <body>
+
+<!-- Aquí se crea la sección informativa del campus --> 
     
     <div class="form-info">
 
@@ -35,6 +27,8 @@
             <h5 class="h">Nuestro Campus</h5>
 
         </div>
+
+<!-- Aquí comenzamos con el formulario de inicio de sesión -->
 
         <div class="form">
 

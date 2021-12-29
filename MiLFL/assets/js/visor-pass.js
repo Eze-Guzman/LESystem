@@ -1,3 +1,5 @@
+//Función de "Mostrar u Ocultar Contraseña".
+
 function hideOrShowpassword() {
 
     checkbox = document.getElementById('ver_pass');

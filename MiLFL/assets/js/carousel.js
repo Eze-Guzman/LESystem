@@ -1,3 +1,5 @@
+//Función de movimiento, visualización y diseño del carrousel.
+
 document.addEventListener('DOMContentLoaded', () => {
     const elementosCarousel = document.querySelectorAll('.carousel');
     M.Carousel.init(elementosCarousel, {

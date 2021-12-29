@@ -1,5 +1,11 @@
 <?php
 
+/*
+  Código que comprueba la existencia del usuario en la base de datos,
+  si este es verdadero, es decir, existe, inicia la sección, de lo
+  contrario, se destruirá la sesión y se volverá al inicio.
+*/
+
     session_start();
 
     if(!isset($_SESSION['administradores'])) {
@@ -32,6 +38,8 @@
     <title>MiLFL</title>
 </head>
 <body>
+
+<!-- Aquí se comienza la creación del Carrousel -->
     
     <div class="container">
         <div class="row">

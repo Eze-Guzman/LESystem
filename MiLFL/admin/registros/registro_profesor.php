@@ -16,7 +16,7 @@
     <div class="form-container">
         <h2>Agregar usuario - PROFESOR</h2>
 
-        <form action="../assets/php/registro_profesor_bd.php" method="POST">
+        <form action="../assets/php/registros/registro_profesor_bd.php" method="POST">
             <label for="">Nombre</label>
             <input type="text" placeholder="Nombre Completo" name="nombre">
             <label for="">DNI</label>

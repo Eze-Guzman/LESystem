@@ -1,6 +1,6 @@
 <?php
 
-    include "../../../assets/php/conexion_bd.php";
+    include "../../../../assets/php/conexion_bd.php";
 
     $nombre = $_POST['nombre'];
     $dni = $_POST['dni'];
@@ -22,7 +22,7 @@
         echo '
             <script>
                 alert("Este dni ya está registrado, intenta con otro diferente");
-                window.location = "../../registros/registro_profesor.php";
+                window.location = "../../../registros/registro_profesor.php";
             </script>
         ';
         exit();
@@ -34,7 +34,7 @@
         echo '
             <script>
                 alert("Usuario almacenado exitosamente");
-                window.location = "../../agregar_mod_usuarios.php";
+                window.location = "../../../agregar_mod_usuarios.php";
             </script>
         ';
     }

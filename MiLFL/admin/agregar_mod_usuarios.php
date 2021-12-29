@@ -74,7 +74,7 @@
                                 <td><?php echo $data['correo'] ?></td>
                                 <td><?php echo $data['rol'] ?></td>
                                 <td>
-                                    <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
+                                    <a href="edicion/editar_usuario.php?id=<?php echo $data["id"]; ?>" 
                                     class="link_edit">Editar</a>
                                     |
                                     <a href="assets/php/eliminar_admin.php?id=<?php echo $data['id'] ?>"
@@ -96,7 +96,7 @@
                                 <td><?php echo $data['correo'] ?></td>
                                 <td><?php echo $data['rol'] ?></td>
                                 <td>
-                                    <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
+                                    <a href="edicion/editar_usuario.php?id=<?php echo $data["id"]; ?>" 
                                     class="link_edit">Editar</a>
                                     |
                                     <a href="assets/php/eliminar_profesores.php?id=<?php echo $data['id'] ?>"
@@ -118,7 +118,7 @@
                                 <td><?php echo $data['correo'] ?></td>
                                 <td><?php echo $data['rol'] ?></td>
                                 <td>
-                                    <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
+                                    <a href="edicion/editar_usuario.php?id=<?php echo $data["id"]; ?>" 
                                     class="link_edit">Editar</a>
                                     |
                                     <a href="assets/php/eliminar_alumnos.php?id=<?php echo $data['id'] ?>"
@@ -140,7 +140,7 @@
                                 <td><?php echo $data['correo'] ?></td>
                                 <td><?php echo $data['rol'] ?></td>
                                 <td>
-                                    <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
+                                    <a href="edicion/editar_usuario.php?id=<?php echo $data["id"]; ?>" 
                                     class="link_edit">Editar</a>
                                     |
                                     <a href="assets/php/eliminar_directivos.php?id=<?php echo $data['id'] ?>"
@@ -162,7 +162,7 @@
                                 <td><?php echo $data['correo'] ?></td>
                                 <td><?php echo $data['rol'] ?></td>
                                 <td>
-                                    <a href="editar_usuario.php?id=<?php echo $data["id"]; ?>" 
+                                    <a href="edicion/editar_usuario.php?id=<?php echo $data["id"]; ?>" 
                                     class="link_edit">Editar</a>
                                     |
                                     <a href="assets/php/eliminar_preceptores.php?id=<?php echo $data['id'] ?>"
