@@ -3,14 +3,15 @@
     session_start();
 
     require_once "materias_bd.php";
-    $materias = new Categorias();
+    $materias = new Materias();
 
     $datos = array (
+        
         "id" => $_SESSION['id'],
         "materia" => $_POST['materia']
         
     );
 
-    echo $materias->agregarCategoria($datos);
+    echo $materias->agregarMateria($datos);
 
 ?>

@@ -1,17 +1,19 @@
-function agregarCategoria() {
+function agregarMateria() {
+
     var materia = $('#nombreMateria').val();
-    if(categoria == "") {
-        swal("Debes agregar una categoría");
+    if(materia == "") {
+        swal("Debes agregar una materia");
         return false;
     }else{
         $.ajax({
             type:"POST",
-            data:"categoria="+categoria,
-            url:"../assets/php/agregarCategoria.php",
+            data:"materia="+materia,
+            url:"../php/agregarMateria.php",
             succes:function(respuesta){
                 respuesta = respuesta.trim();
 
                 if(respuesta == 1) {
+                    $('#nombreMateria').val("")
                     swal(":D","Agregado con éxito!","Success")
                 }else{
                     swal(":(","Fallo al agregar!","error");
@@ -19,4 +21,5 @@ function agregarCategoria() {
             }
         });
     }
+
 }

@@ -1,17 +1,17 @@
 <?php
 
-    require_once "../../../assets/php/conexion_bd";
-    class Categorias extends conexion {
-        public function agregarCategoria($datos) {
-            $conexion = conexion::conexion();
-            $sql = "INSERT INTO categorias (id_usuario, nombre)
+    require_once "conexion/conexion.php";
+    class Materias extends Conectar {
+        public function agregarMateria($datos) {
+            $conexion = Conectar::conexion();
+            $sql = "INSERT INTO materias_biblioteca (id_usuario, nombre)
                     VALUES (?,?)";
             $query = $conexion->prepare($sql);
-            $query->bind_param("is",$datos[id],$datos['materia']);
+            $query->bind_param("is",$datos['id'],$datos['materia']);
             $respuesta = $query->execute();
             $query->close();
 
-            return $resupuesta;
+            return $respuesta;
         }
     }
 

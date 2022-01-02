@@ -1,6 +1,6 @@
 <?php
 
-    include "../../assets/php/conexion_bd.php";
+include "../../assets/php/conexion_bd.php";
 
     //Mostrar Datos
     if(empty($_GET['id'])) {
@@ -11,31 +11,11 @@
 
     $id = $_GET['id'];
 
-        $query_admin = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, u.pass, r.rol 
-        FROM administradores u 
-        INNER JOIN rol r ON u.rol_id = r.idrol");
+    $query_admin = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, u.pass, r.rol, r.idrol 
+    FROM administradores u 
+    INNER JOIN rol r ON u.rol_id = r.idrol");
 
-        $query_prof = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, u.pass, r.rol 
-        FROM profesores u 
-        INNER JOIN rol r ON u.rol_id = r.idrol");
-
-        $query_alum = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, u.pass, r.rol 
-        FROM alumnos u 
-        INNER JOIN rol r ON u.rol_id = r.idrol");
-
-        $query_dir = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, u.pass, r.rol 
-        FROM directivos u 
-        INNER JOIN rol r ON u.rol_id = r.idrol");
-
-        $query_prece = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, u.pass, r.rol 
-        FROM preceptores u 
-        INNER JOIN rol r ON u.rol_id = r.idrol");
-
-        $result_admin = mysqli_num_rows($query_admin);
-        $result_prof = mysqli_num_rows($query_prof);
-        $result_alum = mysqli_num_rows($query_alum);
-        $result_dir = mysqli_num_rows($query_dir);
-        $result_prece = mysqli_num_rows($query_prece);
+    $result_admin = mysqli_num_rows($query_admin);
 
     if($result_admin == 0) {
 
@@ -46,170 +26,6 @@
         $option = '';
 
         while($data = mysqli_fetch_array($query_admin)) {
-
-            # code...
-            $id = $data['id'];
-            $nombre = $data['nombre_completo'];
-            $dni = $data['dni'];
-            $correo = $data['correo'];
-            $pass = $data['pass'];
-            $idrol = $data['idrol'];
-            $rol = $data['rol'];
-
-            if($idrol == 1) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-                 
-            }else if($idrol == 2) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }else if($idrol == 3) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }else if($idrol == 4) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }
-
-        }
-
-    }
-
-    if($result_alum == 0) {
-
-        header('location: agregar_mod_usuarios.php');
-
-    }else{
-
-        $option = '';
-
-        while($data = mysqli_fetch_array($query_alum)) {
-
-            # code...
-            $id = $data['id'];
-            $nombre = $data['nombre_completo'];
-            $dni = $data['dni'];
-            $correo = $data['correo'];
-            $pass = $data['pass'];
-            $idrol = $data['idrol'];
-            $rol = $data['rol'];
-
-            if($idrol == 1) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-                 
-            }else if($idrol == 2) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }else if($idrol == 3) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }else if($idrol == 4) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }
-
-        }
-
-    }
-
-    if($result_dir == 0) {
-
-        header('location: agregar_mod_usuarios.php');
-
-    }else{
-
-        $option = '';
-
-        while($data = mysqli_fetch_array($query_dir)) {
-
-            # code...
-            $id = $data['id'];
-            $nombre = $data['nombre_completo'];
-            $dni = $data['dni'];
-            $correo = $data['correo'];
-            $pass = $data['pass'];
-            $idrol = $data['idrol'];
-            $rol = $data['rol'];
-
-            if($idrol == 1) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-                 
-            }else if($idrol == 2) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }else if($idrol == 3) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }else if($idrol == 4) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }
-
-        }
-
-    }
-
-    if($result_prece == 0) {
-
-        header('location: agregar_mod_usuarios.php');
-
-    }else{
-
-        $option = '';
-
-        while($data = mysqli_fetch_array($query_prece)) {
-
-            # code...
-            $id = $data['id'];
-            $nombre = $data['nombre_completo'];
-            $dni = $data['dni'];
-            $correo = $data['correo'];
-            $pass = $data['pass'];
-            $idrol = $data['idrol'];
-            $rol = $data['rol'];
-
-            if($idrol == 1) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-                 
-            }else if($idrol == 2) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }else if($idrol == 3) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }else if($idrol == 4) {
-
-                $option = '<option value="'.$idrol.'"select>'.$rol.'</option>';
-
-            }
-
-        }
-
-    }
-
-    if($result_prof == 0) {
-
-        header('location: agregar_mod_usuarios.php');
-
-    }else{
-
-        $option = '';
-
-        while($data = mysqli_fetch_array($query_prof)) {
 
             # code...
             $id = $data['id'];
@@ -254,7 +70,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style-agregar-u.css">
+    <link rel="stylesheet" href="../assets/css/style-agregar-u.css">
     <title>Actualizar Usuarios - MiLFL</title>
 </head>
 <body>
