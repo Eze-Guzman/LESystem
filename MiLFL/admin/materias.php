@@ -68,20 +68,21 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
         </button>
       </div>
       <div class="modal-body">
-        <form action="" id="frmMaterias"></form>
-            <label for="Nombre de la categoría"></label>
+        <form action="assets/php/agregarMateria.php" method="POST" id="frmMaterias">
+            <label for="Nombre de la materia"></label>
             <input type="text" name="nombreMateria" id="nombreMateria" class="form-control">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id="btnGuardarMateria">Guardar</button>
+            <input type="hidden" name="id_usuario" value="1">
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary" id="btnGuardarMateria">Guardar</button>
+            </div>
+        </form>
       </div>
     </div>
   </div>
 </div>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="assets/js/materias.js"></script>
     <script type="text/javascript">
 
         $(document).ready(function(){
@@ -89,8 +90,11 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 
             $('#btnGuardarMateria').click(function(){
 
-                agregarMateria();
-
+                var materia = $('#nombreMateria').val();
+                if(materia == "") {
+                    swal("Debes agregar una materia");
+                    return false;
+                }
             });
         });
 
