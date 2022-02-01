@@ -2,7 +2,7 @@
 
     include "../../../../assets/php/conexion_bd.php";
 
-    $id_categoria = $_GET['id_categoria'];
+    $id_categoria = $_GET['id'];
     $delete = "DELETE FROM materias_biblioteca WHERE id_categoria = '$id_categoria'"; 
 
     $delete_result = mysqli_query($conexion, $delete);

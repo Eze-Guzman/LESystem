@@ -13,6 +13,32 @@ if(!isset($_SESSION['administradores'])) {
     die();
 }
 
+include "../assets/php/conexion_bd.php";
+
+    $id = $_GET['id_categoria'];
+
+    $query_materias = mysqli_query($conexion, "SELECT id_categoria, nombre FROM materias_biblioteca");
+
+    $result_materias = mysqli_num_rows($query_materias);
+
+    if($result_materias == 0) {
+
+        header('location: materias.php');
+
+    }else{
+
+        $option = '';
+
+        while($data = mysqli_fetch_array($query_materias)) {
+
+            # code...
+            $id = $data['id_categoria'];
+            $nombre = $data['nombre'];
+
+        }
+
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -62,19 +88,46 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar Nueva Materia</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar Materia</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="assets/php/agregarMateria.php" method="POST" id="frmMaterias">
-            <label for="Nombre de la materia"></label>
-            <input type="text" name="nombreMateria" id="nombreMateria" class="form-control">
+        <form action="assets/php/agregarMateria.php" method="POST" id="frmAgregarMateria">
+            <label for="">Materia</label>
+            <input type="text" id="nombreMateria" name="nombreMateria" class="form-control" >
             <input type="hidden" name="id_usuario" value="1">
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <button class="btn btn-primary" id="btnGuardarMateria">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary">Agregar</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalActualizarMateria" tabindex="-1" role="dialog" 
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar Materia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST" id="frmActualizarMateria">
+            <input type="hidden" name="id" value="<?php echo $id ?>">
+            <label for="">Materia</label>
+            <input type="text" id="MateriaU" name="materiaU" class="form-control" 
+            value="<?php echo $nombre ?>">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-warning">Actualizar</button>
             </div>
         </form>
       </div>
@@ -99,6 +152,6 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
         });
 
     </script>
-    
+
 </body>
 </html>

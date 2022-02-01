@@ -1,12 +1,13 @@
 <?php
 
-    include "../../../assets/php/conexion_bd.php";
+    include "../../../assets/php/conexion_bd.php";    
 
 ?>
 
 <div class="table-responsive">
     <table class="table table-hover table-dark" id="tablaMateriasDataTable">
         <thead style="text-align: center;">
+            <th>ID</th>
             <th>Nombre</th>
             <th>Editar</th>
             <th>Eliminar</th>
@@ -25,15 +26,18 @@
 
         ?>
             <tr>
+                <td style="text-align: center;"><?php echo $data["id_categoria"] ?></td>
                 <td style="text-align: center;"><?php echo $data['nombre'] ?></td>
 
                 <td style="text-align: center;">
-                    <span class="btn btn-warning btn-sm">
+                    <span class="btn btn-warning btn-sm"  data-toggle="modal" 
+                    data-target="#modalActualizarMateria" onclick="obtenerDatosCategoria('<?php echo $id 
+                    ?>')">
                         <span class="fas fa-edit"></span>
                     </span>
                 </td>
                 <td style="text-align: center;">
-                    <a href="biblioteca/eliminar_materia.php?id=<?php echo $data['id_categoria'] ?>" 
+                    <a href="assets/php/biblioteca/eliminar_materia.php?id=<?php echo $data['id_categoria'] ?>" 
                     style="text-decoration: none; color: #fff;" class="link_delete">
                         <span class="btn btn-danger btn-sm">
                             <span class="fas fa-trash-alt"></span>

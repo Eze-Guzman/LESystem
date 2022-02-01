@@ -52,27 +52,7 @@
                 FROM administradores u 
                 INNER JOIN rol r ON u.rol_id = r.idrol");
 
-                $query_prof = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
-                FROM profesores u 
-                INNER JOIN rol r ON u.rol_id = r.idrol");
-
-                $query_alum = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
-                FROM alumnos u 
-                INNER JOIN rol r ON u.rol_id = r.idrol");
-
-                $query_dir = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
-                FROM directivos u 
-                INNER JOIN rol r ON u.rol_id = r.idrol");
-
-                $query_prece = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
-                FROM preceptores u 
-                INNER JOIN rol r ON u.rol_id = r.idrol");
-
                 $result_admin = mysqli_num_rows($query_admin);
-                $result_prof = mysqli_num_rows($query_prof);
-                $result_alum = mysqli_num_rows($query_alum);
-                $result_dir = mysqli_num_rows($query_dir);
-                $result_prece = mysqli_num_rows($query_prece);
 
                 //Condicional muestra-datos de la tabla ADMINISTRADORES
 
@@ -97,6 +77,14 @@
                             </tr>
     
                         <?php
+                    }
+                }
+
+                $query_prof = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
+                FROM profesores u 
+                INNER JOIN rol r ON u.rol_id = r.idrol");
+
+                $result_prof = mysqli_num_rows($query_prof);
 
                 //Condicional muestra-datos de la tabla PROFESORES
 
@@ -122,6 +110,15 @@
     
                         <?php
 
+                    }
+                }
+
+                $query_alum = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
+                FROM alumnos u 
+                INNER JOIN rol r ON u.rol_id = r.idrol");
+
+                $result_alum = mysqli_num_rows($query_alum);
+
                 //Condicional muestra-datos de la tabla ESTUDIANTES
 
                 if($result_alum > 0) {
@@ -146,6 +143,15 @@
     
                         <?php
 
+                    }
+                }
+
+                $query_dir = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
+                FROM directivos u 
+                INNER JOIN rol r ON u.rol_id = r.idrol");
+
+                $result_dir = mysqli_num_rows($query_dir);
+
                 //Condicional muestra-datos de la tabla DIRECTIVOS
 
                 if($result_dir > 0) {
@@ -169,6 +175,15 @@
                             </tr>
     
                         <?php
+
+                    }
+                }
+
+                $query_prece = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, r.rol 
+                FROM preceptores u 
+                INNER JOIN rol r ON u.rol_id = r.idrol");
+
+                $result_prece = mysqli_num_rows($query_prece);
 
                 //Condicional muestra-datos de la tabla PRECEPTORES
 
@@ -195,23 +210,6 @@
                         <?php
 
                     }
-
-                    }
-
-                    }
-
-                    }
-
-                    }
-
-                }
-
-                }
-
-                }
-
-                }
-
                 }
 
             ?>

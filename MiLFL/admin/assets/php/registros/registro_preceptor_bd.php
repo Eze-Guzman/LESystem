@@ -34,7 +34,7 @@
         echo '
             <script>
                 alert("Usuario almacenado exitosamente");
-                window.location = "../../agregar_mod_usuarios.php";
+                window.location = "../../../agregar_mod_usuarios.php";
             </script>
         ';
     }
