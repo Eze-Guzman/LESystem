@@ -3,7 +3,7 @@
     include "../../../../assets/php/conexion_bd.php";
 
     $id = $_GET['id'];
-    $delete = "DELETE FROM administradores WHERE id = '$id'";
+    $delete = "DELETE FROM administradores WHERE id = $id";
 
     $delete_result = mysqli_query($conexion, $delete);
 

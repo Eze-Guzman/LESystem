@@ -1,6 +1,6 @@
 <?php
 
-    include "../../../assets/php/conexion_bd.php";
+    include "../../../../assets/php/conexion_bd.php";
 
     $nombre = $_POST['nombre'];
     $dni = $_POST['dni'];

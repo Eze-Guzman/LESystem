@@ -57,7 +57,7 @@
                         </div>
                     </a>
 
-                    <a href="admin/materias.php" class="carousel-item">
+                    <a href="admin/biblioteca/materias.php" class="carousel-item">
                     <div>
                         <h2 class="subtitulo">Sección</h2>
                         <div class="linea-division"></div>
@@ -75,7 +75,7 @@
                     </div>
                     </a>
 
-                    <a href="" class="carousel-item">
+                    <a href="admin/cuaderno/cuaderno.php" class="carousel-item">
                     <div>
                         <h2 class="subtitulo">Sección</h2>
                         <div class="linea-division"></div>

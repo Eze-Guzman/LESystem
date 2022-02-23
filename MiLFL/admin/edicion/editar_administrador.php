@@ -13,7 +13,7 @@ include "../../assets/php/conexion_bd.php";
 
     $query_admin = mysqli_query($conexion, "SELECT u.id, u.nombre_completo, u.dni, u.correo, u.pass, r.rol, r.idrol 
     FROM administradores u 
-    INNER JOIN rol r ON u.rol_id = r.idrol");
+    INNER JOIN rol r ON u.rol_id = r.idrol WHERE u.id = '$id'");
 
     $result_admin = mysqli_num_rows($query_admin);
 
@@ -33,6 +33,7 @@ include "../../assets/php/conexion_bd.php";
             $dni = $data['dni'];
             $correo = $data['correo'];
             $pass = $data['pass'];
+            $pass = hash('sha512', $pass);
             $idrol = $data['idrol'];
             $rol = $data['rol'];
 
@@ -78,7 +79,7 @@ include "../../assets/php/conexion_bd.php";
     <div class="form-container">
         <h2>Actualizar usuario</h2>
 
-        <form action="assets/php/actualizar_usuario_bd.php" method="POST">
+        <form action="../assets/php/actualizacionUsuarios/actualizo_admin_bd.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $id ?>">
             <label for="">Nombre</label>
             <input type="text" placeholder="Nombre Completo" name="nombre" value="<?php echo $nombre ?>">

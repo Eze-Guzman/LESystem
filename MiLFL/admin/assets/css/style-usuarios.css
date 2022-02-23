@@ -29,11 +29,11 @@ h1, h2, h3, h4, h5, h6 {
     margin: 20px;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
+    transition: background-color, .5s, .5s;
 }
 
-.btn_new:hover {
-    transition-duration: .5s;
-    background: #c81f13;
+.btn_new a:hover {
+    background-color: #c81f13;
 }
 
 table {

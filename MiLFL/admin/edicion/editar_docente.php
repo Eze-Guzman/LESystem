@@ -31,7 +31,7 @@
             $dni = $data['dni'];
             $correo = $data['correo'];
             $pass = $data['pass'];
-            $passencripted = hash('sha512', $pass);
+            $pass = hash('sha512', $pass);
             $idrol = $data['idrol'];
             $rol = $data['rol'];
 
@@ -87,7 +87,7 @@
             <input type="email" name="correo" id="" placeholder="Correo Electrónico" 
             value="<?php echo $correo ?>">
             <label for="">Contraseña</label>
-            <input type="pass" name="pass" id="" placeholder="Contraseña" value="<?php echo $passencripted ?>">
+            <input type="pass" name="pass" id="" placeholder="Contraseña" value="<?php echo $output ?>">
             <label for="rol">Rol</label>
 
             <?php

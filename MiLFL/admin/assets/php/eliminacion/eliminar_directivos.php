@@ -1,6 +1,6 @@
 <?php
 
-    include "../../../../ssets/php/conexion_bd.php";
+    include "../../../../assets/php/conexion_bd.php";
 
     $id = $_GET['id'];
     $delete = "DELETE FROM directivos WHERE id = '$id'";

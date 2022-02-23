@@ -52,6 +52,8 @@
 
             }
 
+            $curso = $data['curso'];
+
         }
 
     }
@@ -118,6 +120,8 @@
                 ?>    
 
             </select>
+            <label for="">Curso</label>
+
             <button>Actualizar</button>
         </form>
     </div>

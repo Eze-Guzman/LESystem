@@ -57,6 +57,7 @@ body {
     margin-bottom: 30px;
     margin-top: 40px;
     font-size: 25px;
+    pointer-events: none;
 }
 
 .form-info .form input[type='text'],
@@ -82,12 +83,19 @@ body {
     margin-top: 25px;
     margin-bottom: 10px;
     font-size: 15px;
+    pointer-events: none;
+}
+
+.form-info .form .check-form input,
+.form-info .form .ver-pass input {
+    pointer-events: painted;
 }
 
 .form-info .form .ver-pass{
     margin-bottom: 25px;
     margin-right: 119px;
     font-size: 15px;
+    pointer-events: none;
 }
 
 .form-info .form button {
@@ -100,10 +108,10 @@ body {
     color: #fff;
     margin-bottom: 25px;
     cursor: pointer;
+    transition: background-color, .5s, .5s;
 }
 
 .form-info .form button:hover {
-    transition: .5s;
     background-color: #c81f13;
 }
 
