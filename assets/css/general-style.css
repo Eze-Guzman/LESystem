@@ -1,0 +1,455 @@
+:root {
+
+    /*La paleta de colores que se usara en toda la página*/
+
+    --color-blanco: #fff;
+    --color-gris-e: #eee;
+    --color-fondo: #ddd;
+    --color-gris-claro: #bbb;
+    --color-gris: #888;
+    --color-negro: #222;
+
+    --color-azul-oscuro: #107;
+    --color-azul-oscuro-alt: #104;
+    --color-azul-opaco: #0c2147;
+
+    --color-amarillo: #d90;
+    --color-naranja-claro: #d70;
+    --color-naranja: #d50;
+    --color-naranja-alt: #f50;
+    --color-naranja-oscuro: #d508;
+    --color-naranja-oscuro-alt: #c50;
+    
+    --color-violeta: #373683;
+    --color-rojo: #c81f13;
+    --color-whatsapp: #0df053;
+
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+/*Propiedades generales del body para toda la página*/
+
+body {
+    background: var(--color-fondo);
+    font-family: 'Roboto', sans-serif;
+}
+
+/*Propiedades generales de los botones y sus variaciones*/
+
+.button {
+    background-color: var(--color-naranja-claro);
+    color: var(--color-blanco);
+    text-decoration: none;
+    align-self: center;
+    font-size: 17px;
+    padding: 7px 20px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+.button:hover {
+    background: var(--color-naranja-alt);
+}
+
+.button--larger {
+    padding: 15px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.button--wider {
+    padding: 15px 50px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.button--bigger {
+    padding: 20px 40px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+/*Todas las propiedades de los slider de fotos*/
+
+.slider {
+    border-radius: 30px;
+    align-self: center;
+    overflow: hidden;
+    position: relative;
+    width: 70%;
+    height: 100%;
+}
+
+.slider__container {
+    display: flex;
+    height: 100%;
+    margin-left: -100%;
+}
+
+.slider__section {
+    width: 100%;
+}
+
+.slider__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider__button {
+    display: flex;
+
+    color: var(--color-blanco);
+    opacity: 0.7;
+
+    width: 9rem;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 3.5rem;
+
+    cursor: pointer;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1500;
+
+    transition: opacity 0.3s;
+}
+
+.slider__button:hover {
+    opacity: 1;
+}
+
+.slider__button--left {
+    left: 0;
+    background: linear-gradient(to right, var(--color-negro), transparent);
+    border-radius: 30px 0 0 30px;
+}
+
+.slider__button--right {
+    right: 0;
+    background: linear-gradient(to left, var(--color-negro), transparent);
+    border-radius: 0 30px 30px 0;
+}
+
+.slider__show-button {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    position: absolute;
+
+    top: 0;
+    z-index: 1000;
+    transition: background 0.5s;
+}
+
+.slider__show-icon {
+    display: flex;
+
+    color: var(--color-blanco);
+
+    height: 100%;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    font-size: 3.5rem;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    z-index: 1000;
+
+    transition: transform 0.5s;
+}
+
+.slider__show-button:hover {
+    background: #2228;
+}
+
+.slider__show-button:hover > .slider__show-icon {
+    transform: translate(-50%, 45%);
+}
+
+/*Todas las propiepades para el modal de los slider*/
+
+.modal-slider {
+    display: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4750;
+
+    background: #2228;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s 0.3s;
+}
+
+.modal-slider--show {
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity 0.5s;
+}
+
+.modal-slider__container {
+    max-width: 100%;
+    width: 120rem;
+    height: 70rem;
+    opacity: 0;
+    margin: auto;
+    
+    transform: translateY(-100vh);
+    transition: transform, opacity, 1s;
+}
+
+.modal-slider__container--show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform, opacity, 1s;
+}
+
+.modal-slider__img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.modal-slider__button {
+    background: #2227;
+    color: var(--color-blanco);
+
+    padding: 1.5rem 2rem;
+    font-size: 4rem;
+    opacity: 0.7;
+    cursor: pointer;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4800;
+
+    transition: opacity 0.3s;
+}
+
+.modal-slider__button:hover {
+    opacity: 1;
+}
+
+/*Todas las propiedades del div con el contacto y las redes sociales*/
+
+.header__info {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 5rem;
+    background: var(--color-fondo);
+    justify-content: space-around;
+
+    position: relative;
+    top: 0;
+    z-index: 4500;
+}
+
+.header__contact {
+    display: flex; 
+    list-style: none;
+    align-items: center;
+}
+
+.header__contact-item {
+    margin: 0 1rem;
+}
+
+.header__contact-link {
+    color: var(--color-azul-oscuro);
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+
+.header__contact-icon {
+    font-size: 1.3rem;
+}
+
+.header__social-media {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.header__social-media-item {
+    margin: 0 0.5rem;
+}
+
+.social-media__icon {
+    color: var(--color-azul-oscuro);
+    transition: transform 0.5s;
+    font-size: 3rem;
+}
+
+.social-media__icon:hover {
+    transform: translateY(-7px);
+}
+
+/*Todas las propiedades del nav*/
+
+.nav {
+    display: flex;
+    width: 100%;
+    min-height: 12%;
+    background-color: var(--color-blanco);
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    box-shadow: 0 0.05rem 1rem var(--color-negro);
+}
+
+.nav__repsonsive-div {
+    display: flex;
+    background-color: var(--color-blanco);
+    justify-content: space-evenly;
+}
+
+/*Todas las propiedades del div que contiene al logo y el texto del ILFl*/
+
+.nav__logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav__img {
+    height: 7rem;
+    margin: 2rem;
+}
+
+.nav__title {
+    font-size: 3rem;
+    color: var(--color-azul-oscuro);
+}
+
+/*Todas las propiedades de la lista que contiene las opciones del nav*/
+
+.nav__options-bar {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0 1.5rem;
+    align-items: flex-end;
+}
+
+.nav__item {
+    margin: 1.5rem;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--color-azul-oscuro);
+    font-size: 1.7rem;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.nav__link:hover {
+    color: var(--color-amarillo);
+}
+
+.nav__menu-button {
+    display: none;
+    color: var(--color-blanco);
+}
+
+/*Todas las propiedades del submenu que se despliega en la opción "niveles"*/
+
+.nav__item--submenu {
+    position: relative;
+}
+
+.nav__submenu {
+    list-style: none;
+    width: 20rem;
+    padding: 1.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+
+    position: absolute;
+    left: -5rem;
+
+    margin-top: 20%;
+
+    z-index: 4000;
+    transition: opacity, visibility, marign-top, 0.5s;
+}
+
+.nav__submenu-item {
+    background: var(--color-gris-e);
+    text-align: center;
+}
+
+.nav__item--submenu:hover > .nav__submenu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+
+.nav__submenu .nav__link {
+    display: block;
+    padding: 1.5rem 0;
+}
+
+.nav__submenu .nav__link:hover {
+    border: none;
+    background: var(--color-blanco);
+}
+
+/*Todas las propiedades del footer*/
+
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #373683;
+    min-height: 20vh;
+}
+
+.footer__programador-text {
+    color: var(--color-blanco);
+    font-size: 17px;
+}
+
+.footer__link {
+    color: var(--color-fondo);
+    text-decoration: none;
+    font-size: 17px;
+    padding: 0 2rem;
+}
+
+.footer__link--bigger {
+    font-family: "Dancing Script", cursive;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.footer__link--with-border {
+    border-left: 0.2rem solid var(--color-blanco);
+    border-right: 0.2rem solid var(--color-blanco);
+}
+
+.footer__data-fiscal {
+    width: 200px;
+}
