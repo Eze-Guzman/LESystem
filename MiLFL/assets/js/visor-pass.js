@@ -1,13 +1,16 @@
+const passCheckbox = document.querySelector('#ver_pass');
+const passField = document.querySelector('#pass');
+
+passCheckbox.addEventListener("click", () => {
+    hideOrShowPassword();
+});
+
 //Función de "Mostrar u Ocultar Contraseña".
+const hideOrShowPassword = () => {
 
-function hideOrShowpassword() {
-
-    checkbox = document.getElementById('ver_pass');
-    passField = document.getElementById('pass');
-
-    if(checkbox.checked == true) {
+    if (passCheckbox.checked)
         passField.type = "text";
-    }else{
+    else
         passField.type = "password"
-    }
+
 }
