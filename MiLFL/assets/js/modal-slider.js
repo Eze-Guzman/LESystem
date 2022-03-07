@@ -1,5 +1,6 @@
 const modal = document.querySelector(".modal-slider");
 const modalContainer = document.querySelector(".modal-slider__container");
+const modalBackground = document.querySelector(".modal-slider__background");
 const modalImg = document.querySelector(".modal-slider__img");
 const modalCloseButton = document.querySelector(".modal-slider__button");
 
@@ -20,6 +21,11 @@ showButton.addEventListener("click", () => {
 });
 
 modalCloseButton.addEventListener("click", () => {
+    modal.classList.remove("modal-slider--show");
+    modalContainer.classList.remove("modal-slider__container--show");
+});
+
+modalBackground.addEventListener("click", () => {
     modal.classList.remove("modal-slider--show");
     modalContainer.classList.remove("modal-slider__container--show");
 });

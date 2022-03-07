@@ -2,6 +2,7 @@
 
 const modalCuenta = document.querySelector('.modal-cuenta');
 const modalCuentaContainer = document.querySelector('.modal-cuenta__container');
+const modalCuentaBackground = document.querySelector(".modal-cuenta__background");
 const modalCuentaCloseButton = document.querySelector('.modal-cuenta__close-button');
 const modalCuentaOpenButton = document.querySelector('.login__forgot-password');
 
@@ -18,4 +19,9 @@ modalCuentaOpenButton.addEventListener('click', (e) => {
 modalCuentaCloseButton.addEventListener('click', () => {
     modalCuenta.classList.remove('modal-cuenta--show');
     modalCuentaContainer.classList.remove('modal-cuenta__container--show');
+});
+
+modalCuentaBackground.addEventListener("click", () => {
+    modalCuenta.classList.remove("modal-cuenta--show");
+    modalCuentaContainer.classList.remove("modal-cuenta__container--show");
 });

@@ -118,10 +118,6 @@
 
     </header>
 
-    <section class="main-img">
-        <img src="assets/img/ImgPrincipal.jpg" alt="" class="main-img__img">
-    </section>
-
     <section class="title-login">
 
         <div class="title">
@@ -256,6 +252,7 @@
 
     <!--Modal donde se muestran las fotos que se seleccionen del slider-->
     <section class="modal-slider" id="modal-slider">
+        <div class="modal-slider__background"></div>
         <div class="modal-slider__container">
             <i class="modal-slider__button fas fa-xmark"></i>
             <img src="../assets/img/example-image.jpg" alt="Imagen de una novedad retratada en el modal" class="modal-slider__img">
@@ -265,20 +262,17 @@
     <!--Modal para la recuperación de cuenta-->
     <section class="modal-cuenta">
 
+        <div class="modal-cuenta__background"></div>
+
         <div class="modal-cuenta__container">
 
             <h2 class="modal-cuenta__title">Recuperación de cuenta</h2>
-            <b class="modal-cuenta__text">Ingresa el dato que recuerdes</b>
+            <p class="modal-cuenta__text">Ingresa tu DNI para que podamos identificar tu cuenta, luego ingresa tu E-mail para poder enviarte un mail de recuperación.</p>
 
             <form class="modal-cuenta__form" action="">
-
-                <select class="modal-cuenta__form-item" name="" id="">
-                    <option value="dni">DNI</option>
-                    <option value="usuario">Correo Electrónico</option>
-                </select>
                 
-                <i class="modal-cuenta__icon fas fa-arrow-right"></i>
-                <input class="modal-cuenta__form-item" type="text" name="" id="">
+                <input class="modal-cuenta__form-item" type="text" placeholder="Ingrese su DNI, sin puntos (requerido)" name="dni-recuperacion">
+                <input class="modal-cuenta__form-item" type="text" placeholder="Ingrese un E-mail (requerido)" name="email-recuperacion" id="">
                 <input class="modal-cuenta__form-button button button--wider" type="submit" id="close" value="Enviar">
 
             </form>
@@ -300,8 +294,7 @@
         </div>
 
         <div class="footer__info-extra">
-            <a class="footer__link" href="#">Vacantes</a>
-            <a class="footer__link footer__link--with-border" href="#">Envía tu CV</a>
+            <a class="footer__link footer__link--with-border" href="https://institutoleloir.com">Página web</a>
             <a class="footer__link" href="#contacto">Contacto</a>
         </div>
         
@@ -310,6 +303,7 @@
     </footer>
 
     <script src="assets/js/loader.js"></script>
+    <script src="assets/js/nav-responsive.js"></script>
     <script src="assets/js/modal-cuenta.js"></script>
     <script src="assets/js/visor-pass.js"></script>
     <script src="assets/js/recordarme.js"></script>

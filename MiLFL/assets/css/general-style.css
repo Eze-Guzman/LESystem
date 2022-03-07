@@ -207,6 +207,12 @@ body {
     transition: opacity 0.5s;
 }
 
+.modal-slider__background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
 .modal-slider__container {
     max-width: 100%;
     width: 120rem;
@@ -446,10 +452,188 @@ body {
 }
 
 .footer__link--with-border {
-    border-left: 0.2rem solid var(--color-blanco);
-    border-right: 0.2rem solid var(--color-blanco);
+    border-right: 2px solid var(--color-blanco);
 }
 
 .footer__data-fiscal {
     width: 200px;
+}
+
+
+
+
+
+@media screen and (max-width: 860px) {
+
+    :root {
+        font-size: 50%;
+    }
+
+    .header__contact {
+        display: none;
+    }
+
+    .header__info {
+        min-height: 7rem;
+    }
+
+    .header__social-media-item {
+        margin: 0 0.7rem;
+    }
+
+    .social-media__icon {
+        font-size: 4rem;
+    }
+
+    .nav {
+        flex-wrap: nowrap;
+        box-shadow: none;
+        position: relative;
+    }
+
+    .nav__repsonsive-div {
+        width: 100%;
+        box-shadow: 0 0.05rem 1rem var(--color-negro);
+
+        position: relative;
+        z-index: 4250;
+    }
+
+    .nav__menu-button {
+        display: inline-block;
+        align-self: center;
+        font-size: 3.5rem;
+        margin: 2.5rem;
+        color: var(--color-negro);
+    }
+
+    .nav__options-bar {
+        background: var(--color-blanco);
+        width: 100%;
+        height: auto;
+        margin: 0;
+
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: space-evenly;
+        
+
+        margin-top: -25%;
+        position: absolute;
+        
+        z-index: 4000;
+        transition: margin-top 1s;
+    }
+
+    .nav__options-bar--show {
+        margin-top: 11rem;
+    }
+
+    .nav__submenu {
+        width: 100%;
+        height: 0;
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        overflow: hidden;
+        visibility: visible;
+    
+        position: relative;
+        left: 0;
+    
+        z-index: 4000;
+        transition: height 0.5s;
+    }
+
+    .nav__item {
+        width: 100%;
+        margin: 0;
+    }
+
+    .nav__link {
+        display: block;
+        padding: 2.5rem 0;
+        transition: background 0.3s;
+    }
+
+    .nav__link:hover {
+        background: var(--color-fondo);
+        border: transparent;
+        color: var(--color-azul-oscuro);
+    }
+
+}
+
+@media screen and (max-width: 710px) {
+
+    .modal-slider__container {
+        max-height: 80%;
+    }
+
+    .footer {
+        flex-direction: column;
+    }
+
+    .footer__programador,
+    .footer__info-extra,
+    .footer__data-fiscal {
+        margin: 3rem 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    
+    .nav__options-bar {
+        margin-top: -20rem;
+    }
+
+    .nav__options-bar--show {
+        margin-top: 11rem;
+    }
+
+    .modal-slider__container {
+        max-height: 40%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    
+}
+
+@media screen and (max-width: 335px) {
+
+    .nav__options-bar--show {
+        margin-top: 14.4rem;
+    }
+
+    .footer__info-extra {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer__link {
+        margin: 1.5rem 0;
+        border: none;
+        text-align: center;
+    }
+
+    .footer__link--with-border {
+        border-bottom: 2px solid var(--color-blanco);
+        padding-bottom: 2.5rem;
+    }
+    
+}
+
+@media screen and (max-width: 313px) {
+    
+    .nav__options-bar {
+        margin-top: -10rem;
+    }
+
+    .nav__options-bar--show {
+        margin-top: 17.9rem;
+    }
 }
