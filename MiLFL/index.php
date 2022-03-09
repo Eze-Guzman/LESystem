@@ -166,7 +166,7 @@
     <section class="infomacion" id="informacion">     
 
         <div class="informacion__container">
-            <img class="informacion__img" src="assets/img/secundario_bg.svg" alt="">
+            <img class="informacion__img" src="assets/img/milfl-info-img.svg" alt="">
             
             <div class="informacion__text-container" data-aos="fade-up">
 

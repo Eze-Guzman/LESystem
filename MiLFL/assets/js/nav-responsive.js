@@ -9,6 +9,14 @@ const subMenu = document.querySelector(".nav__submenu");
 //Al dar click, se activa la clase que despliga el menu.
 menuBtn.addEventListener("click", () => {
     menuBtn.classList.toggle('fa-xmark');
+    menuBtn.style.transition = "transform 0.4s";
+
+    if (!navBar.classList.contains('nav__options-bar--show')) {
+        menuBtn.style.transform = "rotate(90deg)";
+    } else {
+        menuBtn.style.transform = "rotate(0)";
+    }
+
     navBar.classList.toggle('nav__options-bar--show');
 
     if(subMenu != null) {
@@ -29,6 +37,7 @@ window.addEventListener("scroll", () => {
         (window.innerWidth < window.innerHeight)) {
         
         menuBtn.classList.remove('fa-xmark');
+        menuBtn.style.transform = "rotate(0)";
         navBar.classList.remove('nav__options-bar--show');
 
         if (subMenu != null) {

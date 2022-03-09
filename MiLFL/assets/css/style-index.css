@@ -3,15 +3,6 @@ h2 {
     color: var(--color-naranja-claro);
 }
 
-/*Todas las propiedades de la imagen principal*/
-
-.main-img__img {
-    width: 100%;
-    height: 0;
-    object-fit: cover;
-    filter: brightness(60%);
-}
-
 /*Todas las propiedades de la sección que contiene al titulo y al login*/
 
 .title-login {
@@ -418,4 +409,18 @@ h2 {
         width: 100%;
     }
     
+}
+
+@media screen and (max-width: 335px) {
+
+    .nav__options-bar--show {
+        margin-top: 14.4rem;
+    }
+}
+
+@media screen and (max-width: 335px) {
+
+    .nav__options-bar--show {
+        margin-top: 17.9rem;
+    }
 }

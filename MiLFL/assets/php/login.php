@@ -30,31 +30,31 @@
     if(isset($filas_administrador['rol_id']) == 1){ //Ingreso Administrador
         
         $_SESSION['administradores'] = $dni;
-        header ("location: ../../inicio_admin.php");
+        header ("location: ../../inicio.php");
         exit;
 
-    }elseif(isset($filas_docente['rol_id']) == 2){ //Ingreso Docente
+    }elseif(isset($filas_profesor['rol_id']) == 2){ //Ingreso Docente
 
         $_SESSION['profesores'] = $dni;
-        header ("location: ../../inicio_profesor.php");
+        header ("location: ../../inicio.php");
         exit;
 
     }elseif(isset($filas_alumno['rol_id']) == 3){ //Ingreso Estudiante
 
         $_SESSION['alumnos'] = $dni;
-        header ("location: ../../inicio_alumno.php");
+        header ("location: ../../inicio.php");
         exit;
 
     }elseif(isset($filas_directivo['rol_id']) == 4){ //Ingreso Director
         
         $_SESSION['directivo'] = $dni;
-        header ("location: ../../inicio_director.php");
+        header ("location: ../../inicio.php");
         exit;
 
-    }elseif(isset($filas['rol_id']) == 5){ //Ingreso Preceptor/a
+    }elseif(isset($filas_preceptor['rol_id']) == 5){ //Ingreso Preceptor/a
 
         $_SESSION['preceptores'] = $dni;
-        header ("location: ../../inicio_preceptor.php");
+        header ("location: ../../inicio.php");
         exit;
 
     }else{

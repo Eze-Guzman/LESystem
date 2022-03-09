@@ -35,6 +35,60 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+/*Todas las propiedades del loader*/
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: var(--color-amarillo) transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.loader {
+    background: var(--color-fondo);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    z-index: 5000;
+}
+
+.loader--hide {
+    display: none;
+}
+
 /*Propiedades generales de los botones y sus variaciones*/
 
 .button {
@@ -460,14 +514,7 @@ body {
 }
 
 
-
-
-
-@media screen and (max-width: 860px) {
-
-    :root {
-        font-size: 50%;
-    }
+@media screen and (max-width: 875px) {
 
     .header__contact {
         display: none;
@@ -518,9 +565,8 @@ body {
         flex-direction: column;
         text-align: center;
         justify-content: space-evenly;
-        
 
-        margin-top: -25%;
+        margin-top: -37.5%;
         position: absolute;
         
         z-index: 4000;
@@ -563,6 +609,15 @@ body {
         border: transparent;
         color: var(--color-azul-oscuro);
     }
+    
+}
+
+
+@media screen and (max-width: 860px) {
+
+    :root {
+        font-size: 50%;
+    }
 
 }
 
@@ -583,30 +638,29 @@ body {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 650px) {
     
     .nav__options-bar {
-        margin-top: -20rem;
+        margin-top: -32.5rem;
     }
 
     .nav__options-bar--show {
         margin-top: 11rem;
     }
 
+}
+
+@media screen and (max-width: 600px) {
+
     .modal-slider__container {
         max-height: 40%;
     }
 }
 
-@media screen and (max-width: 400px) {
-
-    
-}
-
 @media screen and (max-width: 335px) {
 
     .nav__options-bar--show {
-        margin-top: 14.4rem;
+        margin-top: 11.3rem;
     }
 
     .footer__info-extra {
@@ -628,12 +682,8 @@ body {
 }
 
 @media screen and (max-width: 313px) {
-    
-    .nav__options-bar {
-        margin-top: -10rem;
-    }
 
     .nav__options-bar--show {
-        margin-top: 17.9rem;
+        margin-top: 14.5rem;
     }
 }
