@@ -1,0 +1,54 @@
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ff9747;
+    font-family: 'Roboto', sans-serif;
+}
+
+.col-publicacion {
+    text-align: center;
+}
+
+textarea {
+    font-family: 'Roboto', sans-serif;
+    border-radius: 1rem;
+    border: none;
+    padding: 1rem;
+    font-size: 1.7rem;
+    outline: none;
+    border-color: #fff;
+    resize: none;
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+.custom-input-file {
+    position: relative;
+    display: inline-block;
+  }
+
+.custom-input-file::before {
+    background-color: #5678EF;
+    color: white;
+    display: flex;
+    border-radius: 3px;
+    content: 'Seleccionar archivo';
+    position: absolute;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.custom-input-file input[type='file'] {
+    opacity: 0;
+    margin-right: 356px;
+    margin-top: 5px;
+    display: inline-block;
+}
