@@ -82,7 +82,6 @@
                 <textarea name="mensajePublicacion" id="mensajePublicacion" 
                 placeholder="¿Qué desea publicar hoy?" class="boxText boxText-noresize"
                 cols="44" rows="7" required></textarea>
-                <input type="file" name="filePhoto" id="" class="btn--center btn btn-primary me-md-5">
                 <input type="submit" value="Publicar" class="btn--center btn btn-primary me-md">
                 <input type="hidden" name="fechaActual" value="<?php echo $fecha ?>">
                 <input type="hidden" name="nombreUsuario" value="<?php echo $nombre_completo ?>">
