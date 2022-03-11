@@ -1,43 +1,55 @@
-const funciones = document.querySelector(".funciones");
+const crearCard = (link, img, title, text, className) => {
+
+    const section = document.querySelector(`.${className}`);
+
+    const cardLink = document.createElement("A");
+    cardLink.href = link;
+    cardLink.classList.add(`${className}__link`);
+
+    const cardDiv = document.createElement("DIV");
+    cardDiv.classList.add(`${className}__card`);
+
+    const cardImg = document.createElement("IMG");
+    cardImg.src = img;
+    cardImg.classList.add(`${className}__img`);
+
+    const cardTitle = document.createElement("H3");
+    cardTitle.innerHTML = title;
+    cardTitle.classList.add(`${className}__title`);
+
+    const cardText = document.createElement("P");
+    cardText.innerHTML = text;
+    cardText.classList.add(`${className}__text`);
 
 
-const crearCard = (link, img, title, text) => {
-
-    const funcionesLink = document.createElement("A");
-    funcionesLink.href = link;
-    funcionesLink.classList.add("funciones__link");
-
-    const funcionesCard = document.createElement("DIV");
-    funcionesCard.classList.add("funciones__card");
-
-    const funcionesImg = document.createElement("IMG");
-    funcionesImg.src = img;
-    funcionesImg.classList.add("funciones__img");
-
-    const funcionesTitle = document.createElement("H3");
-    funcionesTitle.innerHTML = title;
-    funcionesTitle.classList.add("funciones__title");
-
-    const funcionesText = document.createElement("P");
-    funcionesText.innerHTML = text;
-    funcionesText.classList.add("funciones__text");
-
-
-    funciones.appendChild(funcionesLink);
-    funcionesLink.appendChild(funcionesCard);
-    funcionesCard.appendChild(funcionesImg);
-    funcionesCard.appendChild(funcionesTitle);
-    funcionesCard.appendChild(funcionesText);
+    section.appendChild(cardLink);
+    cardLink.appendChild(cardDiv);
+    cardDiv.appendChild(cardImg);
+    cardDiv.appendChild(cardTitle);
+    cardDiv.appendChild(cardText);
 
 }
 
-const modificarCardText = (childIndex, newText) => {
+const modificarCardText = (childIndex, newText, className) => {
 
-    const funcionesChildren = funciones.children;
-    const funcionesChild = funcionesChildren[childIndex];
-    const funcionesCard = funcionesChild.firstElementChild;
-    const funcionesCardText = funcionesCard.lastElementChild;
+    const section = document.querySelector(`.${className}`);
 
-    funcionesCardText.innerHTML = newText;
+    const cardLinks = section.children;
+    const cardLink = cardLinks[childIndex];
+    const card = cardLink.firstElementChild;
+    const cardText = card.lastElementChild;
+
+    cardText.innerHTML = newText;
+
+}
+
+const modificarCardLink = (childIndex, newLink, className) => {
+
+    const section = document.querySelector(`.${className}`);
+
+    const cardLinks = section.children;
+    const cardLink = cardLinks[childIndex];
+
+    cardLink.href = newLink;
 
 }

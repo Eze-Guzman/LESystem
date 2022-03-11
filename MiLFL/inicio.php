@@ -12,6 +12,7 @@
     define("ROL_PRECEPTOR", 5);
 
     $rol;
+    $curso = 0;
 
     /*
         Código que comprueba la existencia del usuario en la base de datos,
@@ -38,6 +39,12 @@
     else if(isset($_SESSION['alumnos'])) {
         $dni = $_SESSION['alumnos'];
         $query_nombre = mysqli_query($conexion, "SELECT nombre_completo FROM alumnos WHERE dni='$dni'");
+        $query_curso = mysqli_query($conexion, "SELECT curso FROM alumnos WHERE dni='$dni'");
+
+        // Obtiene el curso del alumno tomandolo de la consulta de MySQL.
+        $curso_array = mysqli_fetch_array($query_curso);
+        $curso = $curso_array[0];
+
         $rol = ROL_ALUMNO;
     } 
     
@@ -104,7 +111,7 @@
             <div class="nav__repsonsive-div">
 
                 <div class="nav__logo">
-                    <a class="nav__logo-link" href="inicio.html">
+                    <a class="nav__logo-link" href="inicio.php">
                         <img class="nav__img" src="assets/img/logo.png" alt="Logo del Instituto Luis Federico Leloir, Instituto Luis Federico Leloir">
                         <h1 class="nav__title">Instituto Luis Federico Leloir</h1>
                     </a>
@@ -119,7 +126,7 @@
                     <a class="nav__link" href="inicio.php">INICIO</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="admin/biblioteca/materias.php">BIBLIOTECA</a>
+                    <a class="nav__link" href="admin/biblioteca/elegir-cursos.php">BIBLIOTECA</a>
                 </li>
                 <li class="nav__item">
                     <a class="nav__link" href="admin/cuaderno/cuaderno.php">CUADERNO DE COMUNICADOS</a>
@@ -147,7 +154,7 @@
         
         <section class="funciones">
 
-            <a href="admin/biblioteca/materias.php" class="funciones__link">
+            <a href="admin/biblioteca/elegir-cursos.php" class="funciones__link">
                 <div class="funciones__card">
                     <img src="assets/img/Files And Folder_Isometric.png" alt="" class="funciones__img">
                     <h3 class="funciones__title">Biblioteca</h3>
@@ -195,28 +202,28 @@
             <script>
 
                 modificarCardText(0,
-                "En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que suban los profesores para utilizar en sus clases.");
+                "En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que suban los profesores para utilizar en sus clases.",
+                "funciones");
 
                 modificarCardText(1,
-                "En el cuaderno de comunicados podes hacer anuncios para que los alumnos los lean.");
+                "En el cuaderno de comunicados podes hacer anuncios para que los alumnos los lean.",
+                "funciones");
 
                 modificarCardText(2,
-                "En el boletín podes ver las calificaciones de los alumnos, ordenado por año y materia.");
-
-                crearCard("#",
-                "assets/img/Manager _Isometric.png",
-                "Agregar actividades",
-                "En este apartado podes crear actividades para tus alumnos, como también corregirlas.");
+                "En el boletín podes ver las calificaciones de los alumnos, ordenado por año y materia.",
+                "funciones");
 
                 crearCard("#",
                 "assets/img/Team work_Isometric.png",
                 "Proyectos institucionales",
-                "En este apartado podes crear y organizar los proyectos institucionales.");
+                "En este apartado podes crear y organizar los proyectos institucionales.",
+                "funciones");
 
                 crearCard("admin/agregar_mod_usuarios.php",
                 "assets/img/User Status_Isometric.png",
                 "Añadir o modificar usuarios",
-                "En este apartado podes añadir, modificar y eliminar usuarios de la base de datos MySQL.");
+                "En este apartado podes añadir, modificar y eliminar usuarios de la base de datos MySQL.",
+                "funciones");
 
             </script>
         ';
@@ -228,23 +235,22 @@
             <script>
 
                 modificarCardText(0,
-                "En la biblioteca podes subir el material didáctico que utilices en tus clases para que tus alumnos puedan acceder a el.");
+                "En la biblioteca podes subir el material didáctico que utilices en tus clases para que tus alumnos puedan acceder a el.",
+                "funciones");
 
                 modificarCardText(1,
-                "En el cuaderno de comunicados podes hacer anuncios para que tus alumnos los lean.");
+                "En el cuaderno de comunicados podes hacer anuncios para que tus alumnos los lean.",
+                "funciones");
 
                 modificarCardText(2,
-                "En el boletín podes subir y cargar las calificaciones de tus alumnos, ordenado por año y materia.");
-
-                crearCard("#",
-                "assets/img/Manager _Isometric.png",
-                "Agregar actividades",
-                "En este apartado podes crear actividades para tus alumnos, como también corregirlas.");
+                "En el boletín podes subir y cargar las calificaciones de tus alumnos, ordenado por año y materia.",
+                "funciones");
 
                 crearCard("#",
                 "assets/img/Team work_Isometric.png",
                 "Proyectos institucionales",
-                "En este apartado podes participar y ver el estado los proyectos institucionales.");
+                "En este apartado podes participar y ver el estado los proyectos institucionales.",
+                "funciones");
 
             </script>
         ';
@@ -255,10 +261,12 @@
         echo '
             <script>
 
-                crearCard("#",
-                "assets/img/Manager _Isometric.png",
-                "Ver actividades",
-                "En este apartado ver actividades que te manden tus profesores, como también envíarlas cuando las tengas listas.");
+                modificarCardLink(0,
+                "admin/biblioteca/cursos/'. $curso .'curso.php",
+                "funciones");
+
+                const bibliotecaNavLink = document.querySelectorAll(".nav__link")[1];
+                bibliotecaNavLink.href = "admin/biblioteca/cursos/'. $curso .'curso.php";
 
             </script>
         ';
@@ -270,18 +278,22 @@
             <script>
 
                 modificarCardText(0,
-                "En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que suban los profesores para utilizar en sus clases.");
+                "En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que suban los profesores para utilizar en sus clases.",
+                "funciones");
 
                 modificarCardText(1,
-                "En el cuaderno de comunicados podes hacer anuncios para que los alumnos los lean.");
+                "En el cuaderno de comunicados podes hacer anuncios para que los alumnos los lean.",
+                "funciones");
 
                 modificarCardText(2,
-                "En el boletín podes ver las calificaciones de los alumnos, ordenado por año y materia.");
+                "En el boletín podes ver las calificaciones de los alumnos, ordenado por año y materia.",
+                "funciones");
 
                 crearCard("#",
                 "assets/img/Team work_Isometric.png",
                 "Proyectos institucionales",
-                "En este apartado podes crear y organizar los proyectos institucionales.");
+                "En este apartado podes crear y organizar los proyectos institucionales.",
+                "funciones");
 
             </script>
         ';
@@ -293,18 +305,22 @@
             <script>
 
                 modificarCardText(0,
-                "En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que suban los profesores para utilizar en sus clases.");
+                "En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que suban los profesores para utilizar en sus clases.",
+                "funciones");
 
                 modificarCardText(1,
-                "En el cuaderno de comunicados podes hacer anuncios para que tus alumnos los lean.");
+                "En el cuaderno de comunicados podes hacer anuncios para que tus alumnos los lean.",
+                "funciones");
 
                 modificarCardText(2,
-                "En el boletín podes ver las calificaciones de los alumnos, ordenado por año y materia.");
+                "En el boletín podes ver las calificaciones de los alumnos, ordenado por año y materia.",
+                "funciones");
 
                 crearCard("#",
                 "assets/img/Team work_Isometric.png",
                 "Proyectos institucionales",
-                "En este apartado podes participar y ver el estado los proyectos institucionales.");
+                "En este apartado podes participar y ver el estado los proyectos institucionales.",
+                "funciones");
 
             </script>
         ';
@@ -318,7 +334,8 @@
                 crearCard("#",
                 "assets/img/User Profile_Isometric.png",
                 "Mi cuenta",
-                "En este apartado podes configurar parametros de tu cuenta como tu nombre, tu contraseña, o tu foto de perfil.");
+                "En este apartado podes configurar parametros de tu cuenta como tu nombre, tu contraseña, o tu foto de perfil.",
+                "funciones");
 
             </script>
         ';

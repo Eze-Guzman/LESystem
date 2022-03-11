@@ -11,24 +11,31 @@
     flex-direction: column;
 }
 
-.materias {
+.cursos {
     background: var(--color-blanco);
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    justify-self: center;
-    padding: 3rem 0;
+    justify-content: center;
+    padding: 4rem 0;
 }
 
-.materias__link {
+.cursos__container {
+    display: grid;
+    width: 70%;
+    grid-template-rows: repeat(2, 30rem);
+    grid-template-columns: repeat(3, 30rem);
+    row-gap: 7rem;
+    column-gap: 7rem;
+    justify-content: space-evenly;
+}
+
+.cursos__link {
     text-decoration: none;
-    margin: 3rem 2rem;
 }
 
-.materias__card {
+.cursos__card {
     background: #ffece1;
-    width: 25rem;
-    height: 35rem;
+    width: 30rem;
+    height: 30rem;
     border-radius: 10px;
     padding: 2rem 0;
     overflow: hidden;
@@ -41,57 +48,52 @@
     transition: transform, box-shadow, background, 0.5s;
 }
 
-.materias__card:hover {
+.cursos__card:hover {
     transform: translateY(-2rem);
     box-shadow: 0 5px 10px var(--color-gris-claro);
     background: #fcd8c5;
 }
 
-.materias__card:hover > .materias__icon {
+.cursos__card:hover > .cursos__icon {
     color: var(--color-amarillo);
 }
 
-.materias__card:hover > .materias__title,
-.materias__card:hover > .materias__text {
-    transform: translateY(0);
+.cursos__img {
+    width: 70%;
 }
 
-.materias__img {
-    width: 50%;
-}
-
-.materias__title {
+.cursos__title {
     font-size: 3rem;
     font-weight: 500;
     color: var(--color-negro);
     text-align: center;
-    transform: translateY(7rem);
     transition: color, 0.3s, transform, 0.5s;
 }
 
-.materias__text {
-    text-align: center;
-    color: var(--color-negro);
-    font-size: 1.7rem;
-    line-height: 1.5;
-    letter-spacing: 0.1rem;
-    animation: elevar-parrafos 1.2s;
-    padding: 1rem;
-    transform: translateY(200%);
-    transition: transform 0.5s;
+@media screen and (max-width: 1100px) {
+
+    .cursos__container {
+        width: 100%;
+        grid-template-rows: repeat(3, 30rem);
+        grid-template-columns: repeat(2, 30rem);
+        row-gap: 4rem;
+        column-gap: 0;
+    }
+    
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 540px) {
+
+    .cursos__container {
+        grid-template-rows: repeat(6, 30rem);
+        grid-template-columns: 30rem;
+    }
     
-    .materias__title,
-    .materias__text {
-    transform: translateY(0);
-}
 }
 
 @media screen and (max-width: 335px) {
 
-    .materias__card {
+    .funciones__card {
         width: 100%;
     }
     

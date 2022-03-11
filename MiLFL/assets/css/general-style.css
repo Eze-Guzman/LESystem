@@ -513,8 +513,7 @@ body {
     width: 200px;
 }
 
-
-@media screen and (max-width: 875px) {
+@media screen and (max-width: 890px) {
 
     .header__contact {
         display: none;
