@@ -26,7 +26,7 @@
 }
 
 .funciones__card {
-    background: #ffece1;
+    background: var(--color-salmon-claro);
     width: 35rem;
     height: 55rem;
     border-radius: 10px;
@@ -44,7 +44,7 @@
 .funciones__card:hover {
     transform: translateY(-2rem);
     box-shadow: 0 5px 10px var(--color-gris-claro);
-    background: #fcd8c5;
+    background: var(--color-salmon);
 }
 
 .funciones__card:hover > .funciones__icon {
@@ -77,8 +77,26 @@
     letter-spacing: 0.1rem;
     animation: elevar-parrafos 1.2s;
     padding: 1rem;
-    transform: translateY(150%);
+    transform: translateY(175%);
     transition: transform 0.5s;
+}
+
+.funciones__notif {
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+
+    color: var(--color-blanco);
+    background: var(--color-rojo);
+    font-size: 1.7rem;
+    border-radius: 50%;
+
+    position: relative;
+    top: -90%;
+    left: 40%;
+    z-index: 1000;
 }
 
 @media screen and (max-width: 860px) {

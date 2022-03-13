@@ -45,6 +45,10 @@
         $curso_array = mysqli_fetch_array($query_curso);
         $curso = $curso_array[0];
 
+        $query_msg = mysqli_query($conexion, "SELECT msg_no_leidos FROM alumnos WHERE dni='$dni'");
+        $array_msg = mysqli_fetch_array($query_msg);
+        $msg_no_leidos = $array_msg[0];
+
         $rol = ROL_ALUMNO;
     } 
     
@@ -132,9 +136,6 @@
                     <a class="nav__link" href="admin/cuaderno/cuaderno.php">CUADERNO DE COMUNICADOS</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="#">BOLETÍN</a>
-                </li>
-                <li class="nav__item">
                     <a class="nav__link" href="#">MI CUENTA</a>
                 </li>
                 <li class="nav__item">
@@ -174,16 +175,6 @@
                 </div>
             </a>
 
-            <a href="#" class="funciones__link">
-                <div class="funciones__card">
-                    <img src="assets/img/Note taking_Isometric.png" alt="" class="funciones__img">
-                    <h3 class="funciones__title">Boletín</h3>
-                    <p class="funciones__text">
-                        En el boletín podes ver tus califiaciones en cada materia a medida que sean subidas al mismo.
-                    </p>
-                </div>
-            </a>
-
         </section>
         
     </main>
@@ -209,16 +200,6 @@
                 "En el cuaderno de comunicados podes hacer anuncios para que los alumnos los lean.",
                 "funciones");
 
-                modificarCardText(2,
-                "En el boletín podes ver las calificaciones de los alumnos, ordenado por año y materia.",
-                "funciones");
-
-                crearCard("#",
-                "assets/img/Team work_Isometric.png",
-                "Proyectos institucionales",
-                "En este apartado podes crear y organizar los proyectos institucionales.",
-                "funciones");
-
                 crearCard("admin/agregar_mod_usuarios.php",
                 "assets/img/User Status_Isometric.png",
                 "Añadir o modificar usuarios",
@@ -242,10 +223,6 @@
                 "En el cuaderno de comunicados podes hacer anuncios para que tus alumnos los lean.",
                 "funciones");
 
-                modificarCardText(2,
-                "En el boletín podes subir y cargar las calificaciones de tus alumnos, ordenado por año y materia.",
-                "funciones");
-
                 crearCard("#",
                 "assets/img/Team work_Isometric.png",
                 "Proyectos institucionales",
@@ -261,15 +238,32 @@
         echo '
             <script>
 
+                const bibliotecaNavLink = document.querySelectorAll(".nav__link")[1];
+                bibliotecaNavLink.href = "admin/biblioteca/cursos/'. $curso .'curso.php";
+
                 modificarCardLink(0,
                 "admin/biblioteca/cursos/'. $curso .'curso.php",
                 "funciones");
 
-                const bibliotecaNavLink = document.querySelectorAll(".nav__link")[1];
-                bibliotecaNavLink.href = "admin/biblioteca/cursos/'. $curso .'curso.php";
-
             </script>
         ';
+
+        if ($msg_no_leidos > 0) {
+
+            echo '
+                <script>
+                
+                    const cuadernoCard = document.querySelectorAll(".funciones__card")[1];
+
+                    const notificacionCuaderno = document.createElement("DIV");
+                    notificacionCuaderno.innerHTML = '. $msg_no_leidos .';
+                    notificacionCuaderno.classList.add("funciones__notif");
+                    cuadernoCard.appendChild(notificacionCuaderno);
+                
+                </script>
+            ';
+
+        }
     }
 
     else if($rol == ROL_DIRECTIVO) {
@@ -283,16 +277,6 @@
 
                 modificarCardText(1,
                 "En el cuaderno de comunicados podes hacer anuncios para que los alumnos los lean.",
-                "funciones");
-
-                modificarCardText(2,
-                "En el boletín podes ver las calificaciones de los alumnos, ordenado por año y materia.",
-                "funciones");
-
-                crearCard("#",
-                "assets/img/Team work_Isometric.png",
-                "Proyectos institucionales",
-                "En este apartado podes crear y organizar los proyectos institucionales.",
                 "funciones");
 
             </script>
@@ -310,16 +294,6 @@
 
                 modificarCardText(1,
                 "En el cuaderno de comunicados podes hacer anuncios para que tus alumnos los lean.",
-                "funciones");
-
-                modificarCardText(2,
-                "En el boletín podes ver las calificaciones de los alumnos, ordenado por año y materia.",
-                "funciones");
-
-                crearCard("#",
-                "assets/img/Team work_Isometric.png",
-                "Proyectos institucionales",
-                "En este apartado podes participar y ver el estado los proyectos institucionales.",
                 "funciones");
 
             </script>

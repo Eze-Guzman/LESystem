@@ -49,7 +49,7 @@
                     <a class="nav__link" href="elegir-cursos.php">BIBLIOTECA</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="admin/cuaderno/cuaderno.php">CUADERNO DE COMUNICADOS</a>
+                    <a class="nav__link" href="../cuaderno/cuaderno.php">CUADERNO DE COMUNICADOS</a>
                 </li>
                 <li class="nav__item">
                     <a class="nav__link" href="#">BOLETÍN</a>

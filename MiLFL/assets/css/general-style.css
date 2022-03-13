@@ -24,6 +24,9 @@
     --color-rojo: #c81f13;
     --color-whatsapp: #0df053;
 
+    --color-salmon-claro: #ffece1;
+    --color-salmon: #fcd8c5;
+
     font-size: 62.5%;
     scroll-behavior: smooth;
 }
@@ -513,7 +516,11 @@ body {
     width: 200px;
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 860px) {
+
+    :root {
+        font-size: 50%;
+    }
 
     .header__contact {
         display: none;
@@ -609,15 +616,6 @@ body {
         color: var(--color-azul-oscuro);
     }
     
-}
-
-
-@media screen and (max-width: 860px) {
-
-    :root {
-        font-size: 50%;
-    }
-
 }
 
 @media screen and (max-width: 710px) {
