@@ -21,14 +21,20 @@
 .publicar__form {
     max-width: 92.5%;
     width: 65rem;
-    height: 35rem;
+    height: 45rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
+.publicar__form-error {
+    color: var(--color-negro);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
 .publicar__form-textarea {
-    height: 70%;
+    height: 60%;
     background: var(--color-fondo);
     font-size: 1.7rem;
     padding: 2rem;
@@ -38,7 +44,18 @@
     resize: none;
 }
 
-.publicar__form-textarea:hover {
+.publicar__form-select {
+    height: 15%;
+    background: var(--color-fondo);
+    font-size: 1.7rem;
+    padding: 2rem;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.publicar__form-textarea:hover,
+.publicar__form-select:hover {
     outline: 1px solid var(--color-naranja-alt);
 }
 

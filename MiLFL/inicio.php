@@ -223,30 +223,11 @@
                 "En el cuaderno de comunicados podes hacer anuncios para que tus alumnos los lean.",
                 "funciones");
 
-                crearCard("#",
-                "assets/img/Team work_Isometric.png",
-                "Proyectos institucionales",
-                "En este apartado podes participar y ver el estado los proyectos institucionales.",
-                "funciones");
-
             </script>
         ';
     }
 
     else if($rol == ROL_ALUMNO) {
-
-        echo '
-            <script>
-
-                const bibliotecaNavLink = document.querySelectorAll(".nav__link")[1];
-                bibliotecaNavLink.href = "admin/biblioteca/cursos/'. $curso .'curso.php";
-
-                modificarCardLink(0,
-                "admin/biblioteca/cursos/'. $curso .'curso.php",
-                "funciones");
-
-            </script>
-        ';
 
         if ($msg_no_leidos > 0) {
 

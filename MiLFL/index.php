@@ -1,3 +1,18 @@
+<?php
+
+    session_start();
+
+    if(isset($_SESSION['administradores']) ||
+       isset($_SESSION['profesores']) ||
+       isset($_SESSION['alumnos']) ||
+       isset($_SESSION['directivo']) ||
+       isset($_SESSION['preceptores'])) {
+
+        session_destroy();
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -255,7 +270,7 @@
         <div class="modal-slider__background"></div>
         <div class="modal-slider__container">
             <i class="modal-slider__button fas fa-xmark"></i>
-            <img src="../assets/img/example-image.jpg" alt="Imagen de una novedad retratada en el modal" class="modal-slider__img">
+            <img src="assets/img/example-image.jpg" alt="Imagen de una novedad retratada en el modal" class="modal-slider__img">
         </div>
     </section>
 

@@ -2,9 +2,9 @@
 
     session_start();
 
-    include '../../assets/php/conexion_bd.php';
+    include '../../../assets/php/conexion_bd.php';
 
-    $curso = 0;
+    $curso = $_GET['curso'];
 
     if (!isset($_SESSION['administradores']) &&
         !isset($_SESSION['profesores']) &&
@@ -19,16 +19,13 @@
             // Obtiene el curso del alumno tomandolo de la consulta de MySQL.
             $curso_array = mysqli_fetch_array($query_curso);
             $curso = $curso_array[0];
-
-            header("location: cursos/materias.php?curso='$curso'");
-            
         }
 
         else {
             echo '
                 <script>
                     alert("Por favor, inicia sesión");
-                    window.location = "../../index.php";
+                    window.location = "../../../index.php";
                 </script>
             ';
             session_destroy();
@@ -46,10 +43,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../../assets/img/logo.png">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/general-style.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/style-elegir-cursos.css">
+    <link rel="icon" href="../../../assets/img/logo.png">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/general-style.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style-cursos.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/41b6154676.js" crossorigin="anonymous"></script>
 </head>
@@ -72,8 +69,8 @@
             <div class="nav__repsonsive-div">
 
                 <div class="nav__logo">
-                    <a class="nav__logo-link" href="../../inicio.php">
-                        <img class="nav__img" src="../../assets/img/logo.png" alt="Logo del Instituto Luis Federico Leloir, Instituto Luis Federico Leloir">
+                    <a class="nav__logo-link" href="../../../inicio.php">
+                        <img class="nav__img" src="../../../assets/img/logo.png" alt="Logo del Instituto Luis Federico Leloir, Instituto Luis Federico Leloir">
                         <h1 class="nav__title">Instituto Luis Federico Leloir</h1>
                     </a>
                 </div>
@@ -84,22 +81,19 @@
 
             <ul class="nav__options-bar">
                 <li class="nav__item">
-                    <a class="nav__link" href="../../inicio.php">INICIO</a>
+                    <a class="nav__link" href="../../../inicio.php">INICIO</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="elegir-cursos.php">BIBLIOTECA</a>
+                    <a class="nav__link" href="../elegir-cursos.php">BIBLIOTECA</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="../cuaderno/cuaderno.php">CUADERNO DE COMUNICADOS</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="#">BOLETÍN</a>
+                    <a class="nav__link" href="../../cuaderno/cuaderno.php">CUADERNO DE COMUNICADOS</a>
                 </li>
                 <li class="nav__item">
                     <a class="nav__link" href="#">MI CUENTA</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="../../assets/php/cerrar_sesion.php">CERRAR SESIÓN</a>
+                    <a class="nav__link" href="../../../assets/php/cerrar_sesion.php">CERRAR SESIÓN</a>
                 </li>
             </ul>
 
@@ -110,36 +104,52 @@
     <main class="main">
 
         <section class="titulo">
-            <h2 class="titulo__title">¿A qué curso querés acceder?</h2>
+            <h2 class="titulo__title">¿A qué materia querés acceder?</h2>
         </section>
 
-        <section class="cursos">
+        <?php
 
-            <div class="cursos__container">
+            $query_materias = mysqli_query($conexion,
+                          "SELECT m.id, m.nombre, m.ruta_img, m.curso_id, p.nombre_completo
+                          FROM materias m
+                          INNER JOIN profesores p
+                          ON m.profesor_id = p.id
+                          WHERE curso_id = '$curso'");
 
-                <?php              
-                    for ($i = 0; $i < 6; $i++) {
-                ?>
+            $result_materias = mysqli_num_rows($query_materias);
+        
+        ?>
 
-                <a href="cursos/materias.php?curso=<?php echo $i +1 ?>" class="cursos__link">
-                    <div class="cursos__card">
-                        <img src="../assets/img/School_Isometric.png" alt="" class="cursos__img">
-                        <h3 class="cursos__title"><?php echo $i +1 ?>° Año</h3>
-                    </div>
-                </a>
+        <section class="materias">
 
-                <?php
+            <?php
+            
+                if ($result_materias > 0) {
+
+                    while($data = mysqli_fetch_array($query_materias)) {
+            ?>
+
+            <a href="../materias/primerAño/cienciasNaturales.php" class="materias__link">
+                <div class="materias__card">
+                    <img src="<?php echo $data['ruta_img'] ?>" alt="" class="materias__img">
+                    <h3 class="materias__title"><?php echo $data['nombre'] ?></h3>
+                    <p class="materias__text">
+                        Profesor/a: <?php echo $data['nombre_completo'] ?>.
+                    </p>
+                </div>
+            </a>
+
+            <?php
                     }
-                ?>
 
-            </div>
+                }
+            ?>
 
         </section>
 
     </main>
     
-    <script src="../../assets/js/loader.js"></script>
-    <script src="../../assets/js/nav-responsive.js"></script>
-    <script src="../../assets/js/crear-cards.js"></script>
+    <script src="../../../assets/js/loader.js"></script>
+    <script src="../../../assets/js/nav-responsive.js"></script>
 </body>
 </html>

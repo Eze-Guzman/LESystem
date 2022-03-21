@@ -10,6 +10,7 @@
     define("ROL_DIRECTIVO", 4);
     define("ROL_PRECEPTOR", 5);
 
+    $curso = 0;
     $rol;
 
     /*
@@ -42,8 +43,14 @@
         $update_msg = "UPDATE alumnos SET msg_no_leidos = 0 WHERE dni='$dni'";
         $ejecutar_msg = mysqli_query($conexion, $update_msg);
 
+        $query_curso = mysqli_query($conexion, "SELECT curso FROM alumnos WHERE dni='$dni'");
+
+        // Obtiene el curso del alumno tomandolo de la consulta de MySQL.
+        $curso_array = mysqli_fetch_array($query_curso);
+        $curso = $curso_array[0];
+
         $rol = ROL_ALUMNO;
-    } 
+    }        
 
     else if(isset($_SESSION['directivo'])) {
         $dni = $_SESSION['directivo'];
@@ -80,12 +87,6 @@
     setlocale(LC_TIME, $script_tz);
 
     $fecha = date("Y-m-d");
-
-    // Obtiene los campos de la tabla mensajes mediante una consulta de MySQL.
-    $query_publicacion = mysqli_query($conexion, "SELECT idPublicacion, nombreUsuario, 
-                         contenidoPublicacion, fechaPublicacion FROM publicaciones");
-            
-    $result_publicacion = mysqli_num_rows($query_publicacion);
 
 ?>
 
@@ -169,11 +170,31 @@
 
             <form action="procesos/publicacion.php" method="post" class="publicar__form">
 
+                <label for="mensaje-publicacion" class="publicar__form-error publicar__form-error--textarea"></label>
                 <textarea class="publicar__form-textarea"
                           name="mensaje-publicacion"
                           placeholder="Escribí lo que quieras publicar..."
                           required></textarea>
 
+                <label for="curso-destinatario" class="publicar__form-error publicar__form-error--select"></label>
+                <select name="curso-destinatario" class="publicar__form-select">
+                    <option value="placeholder">Seleccione a que curso enviar...</option>
+                    <option value="1">1° año</option>
+                    <option value="2">2° año</option>
+                    <option value="3">3° año</option>
+                    <option value="4">4° año</option>
+                    <option value="5">5° año</option>
+                    <option value="6">6° año</option>
+
+                    <?php
+                        if ($rol == ROL_ADMINISTRADOR || $rol == ROL_DIRECTIVO) {
+                    ?>
+                    <option value="7">Enviar a todos los cursos</option>
+                    <?php
+                        }
+                    ?>
+
+                </select>
                 <input type="hidden" name="nombre-usuario" value="<?php echo $nombre_completo ?>">
                 <input type="hidden" name="fecha-actual" value="<?php echo $fecha ?>">
 
@@ -193,6 +214,16 @@
             <div class="publicaciones__container">
 
             <?php
+
+                // Obtiene los campos de la tabla publicaciones mediante una consulta de MySQL.
+
+                if ($rol == ROL_ALUMNO)
+                    $query_publicacion = mysqli_query($conexion, "SELECT * FROM publicaciones WHERE curso_id = '$curso' OR curso_id = 7");
+                else
+                    $query_publicacion = mysqli_query($conexion, "SELECT * FROM publicaciones");
+                
+
+                $result_publicacion = mysqli_num_rows($query_publicacion);
             
                 // Condicional muestra-datos de la tabla publicaciones.
                 if($result_publicacion > 0){
@@ -256,7 +287,7 @@
     
     <script src="../../assets/js/loader.js"></script>
     <script src="../../assets/js/nav-responsive.js"></script>
-    <script src="../assets/js/marcar-leido.js"></script>
     <script src="../assets/js/eliminacion.js"></script>
+    <script src="../assets/js/form.js"></script>
 </body>
 </html>
