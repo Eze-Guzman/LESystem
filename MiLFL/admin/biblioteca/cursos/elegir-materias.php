@@ -129,7 +129,7 @@
                     while($data = mysqli_fetch_array($query_materias)) {
             ?>
 
-            <a href="../materias/primerAño/cienciasNaturales.php" class="materias__link">
+            <a href="materia.php?id_materia=<?php echo $data['id'] ?>" class="materias__link">
                 <div class="materias__card">
                     <img src="<?php echo $data['ruta_img'] ?>" alt="" class="materias__img">
                     <h3 class="materias__title"><?php echo $data['nombre'] ?></h3>

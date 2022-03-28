@@ -262,7 +262,7 @@
                         if ($rol != ROL_ALUMNO) {
                     ?>
 
-                    <a href="procesos/eliminarPublicaciones.php?id=<?php echo $filas[$i][0]; ?>"
+                    <a href="procesos/eliminar-publicaciones.php?id=<?php echo $filas[$i][0]; ?>"
                        class="publicaciones__button publicaciones__button--eliminar link_delete">
 
                         <i class="publicaciones__icon fa-solid fa-trash-can"></i> Eliminar

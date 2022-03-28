@@ -1,0 +1,66 @@
+Proyectos:
+
+Corto plazo:
+
+12. Hacer y colgar carteleras
+15. Limpieza
+11. Hablar con el grupo de padres y cooperadora
+9. Reformular el codigo de vestimenta
+8. Vender comidas nacionales en fechas patrias
+1. Plantar arboles en la escuela
+3. Repintar las aulas y los exteriores de la escuela
+4. Reparar las luces de las aulas
+7. Reparar sillas
+6. Hacer murales relacionados con la escuela
+14. Higiene femenina, preservativos y ESI
+21. Actualizar AIC
+22. Organizar semana de la dulzura
+
+Largo plazo:
+
+2. Reinstalar los ventiladores en basico
+5. Rehacer las mesas de concreto de basico y hacer nuevas para superior
+10. Ir armando un aula tecnologica
+17. Seguridad
+18. Comida
+13. Organizar recreación
+19. Reparar infraestructura
+20. Organizar elecciones
+
+Corto plazo: 12, 15, 11, 9, 8, 1, 3, 4, 7, 6, 22
+Largo plazo: 2, 5, 10, 17, 18, 13
+
+-----------------------------------------------------------------------
+
+Menor prioridad:
+
+12. Hacer y colgar carteleras
+15. Limpieza
+9. Reformular el codigo de vestimenta,
+21. Actualizar AIC
+8. Vender comidas nacionales en fechas patrias
+1. Plantar arboles en la escuela
+7. Reparar sillas
+14. Higiene femenina, preservativos y ESI
+5. Rehacer las mesas de concreto de basico y hacer nuevas para superior
+13. Organizar recreación
+22. Organizar semana de la dulzura
+
+Mayor prioridad:
+
+17. Seguridad
+18. Comida
+19. Reparar infraestructura
+2. Reinstalar los ventiladores en basico
+10. Ir armando un aula tecnologica
+11. Hablar con el grupo de padres y cooperadora
+20. Organizar elecciones
+3. Repintar las aulas y los exteriores de la escuela
+4. Reparar las luces de las aulas
+6. Hacer murales relacionados con la escuela
+
+Menor prioridad: 12, 15, 9, 21, 8, 1, 7, 14, 5, 13, 22
+Mayor prioridad: 17, 18, 19, 2, 10, 11, 20, 3, 4, 6
+
+
+

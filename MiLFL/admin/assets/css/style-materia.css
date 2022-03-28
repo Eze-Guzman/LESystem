@@ -1,0 +1,187 @@
+.titulo__title {
+    font-size: 4.5rem;
+    color: var(--color-naranja-claro);
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.archivos {
+    background: var(--color-blanco);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    justify-self: center;
+    padding: 3rem 0;
+}
+
+.archivos__table {
+    font-size: 1.7rem;
+    text-align: center;
+    background: var(--color-salmon-claro);
+    max-width: 95%;
+}
+
+.archivos__row:hover > .archivos__data {
+    background: var(--color-salmon-claro);
+}
+
+.archivos__data {
+    padding: 2.3rem;
+    background: var(--color-salmon);
+}
+
+.archivos__link {
+    color: var(--color-blanco);
+    padding: 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.archivos__link--visualizar {
+    background: #1e5fd8;
+}
+
+.archivos__link--visualizar:hover {
+    background: #1a51b8;
+}
+
+.archivos__link--descargar {
+    background: #06b90f;
+}
+.archivos__link--descargar:hover {
+    background: #03860a;
+}
+
+.archivos__link--eliminar {
+    background: #cf0000;
+}
+
+.archivos__link--eliminar:hover {
+    background: #a00000;
+}
+
+.archivos__text {
+    font-size: 1.8rem;
+    color: var(--color-negro);
+    padding: 2rem 0;
+}
+
+
+/*Todas las propiepades para el modal de los slider*/
+
+.modal {
+    display: flex;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4750;
+
+    background: #2228;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s 0.3s;
+}
+
+.modal--show {
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity 0.5s;
+}
+
+.modal__background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.modal__container {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    width: auto;
+    max-height: 75%;
+    height: auto;
+    opacity: 0;
+    margin: auto;
+    
+    transform: translateY(-100vh);
+    transition: transform, opacity, 1s;
+}
+
+.modal__container--show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform, opacity, 1s;
+}
+
+.modal__content--img {
+    width: 120rem;
+    height: 70rem;
+    object-fit: contain;
+}
+
+.modal__content--pdf {
+    width: 120rem;
+    height: 65rem;
+}
+
+.modal__content--audio {
+    width: 35rem;
+    height: 13rem;
+}
+
+.modal__content--video {
+    width: 120rem;
+    overflow: scroll;
+}
+
+.modal__close-button {
+    background: #2227;
+    color: var(--color-blanco);
+
+    padding: 1.5rem 2rem;
+    font-size: 4rem;
+    opacity: 0.7;
+    cursor: pointer;
+
+    position: absolute;
+    top: 0%;
+    right: 0;
+    z-index: 4800;
+
+    transition: opacity 0.3s;
+}
+
+.modal__close-button:hover {
+    opacity: 1;
+}
+
+
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+
+    .modal__content--video {
+        width: 120rem;
+        max-height: 100vh;
+        overflow: scroll;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .archivos {
+        overflow-x: scroll;
+        justify-content: flex-start;
+    }
+
+    .archivos__table {
+        max-width: 100%;
+    }
+}

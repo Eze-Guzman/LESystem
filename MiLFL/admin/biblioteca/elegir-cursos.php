@@ -20,7 +20,7 @@
             $curso_array = mysqli_fetch_array($query_curso);
             $curso = $curso_array[0];
 
-            header("location: cursos/materias.php?curso='$curso'");
+            header("location: cursos/elegir-materias.php?curso='$curso'");
             
         }
 
@@ -121,7 +121,7 @@
                     for ($i = 0; $i < 6; $i++) {
                 ?>
 
-                <a href="cursos/materias.php?curso=<?php echo $i +1 ?>" class="cursos__link">
+                <a href="cursos/elegir-materias.php?curso=<?php echo $i +1 ?>" class="cursos__link">
                     <div class="cursos__card">
                         <img src="../assets/img/School_Isometric.png" alt="" class="cursos__img">
                         <h3 class="cursos__title"><?php echo $i +1 ?>° Año</h3>

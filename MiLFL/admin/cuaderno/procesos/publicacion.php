@@ -11,10 +11,10 @@
     VALUES ('$nombreUsuario', '$mensajePublicacion', '$fechaActual', '$cursoDestinatario')";
 
     if ($cursoDestinatario == 7) {
-        $update_msg = "UPDATE alumnos SET msg_no_leidos = msg_no_leidos + 1 
-                       WHERE curso_id ='$cursoDestinatario'";
-    } else {
         $update_msg = "UPDATE alumnos SET msg_no_leidos = msg_no_leidos + 1";
+    } else {
+        $update_msg = "UPDATE alumnos SET msg_no_leidos = msg_no_leidos + 1 
+                       WHERE curso ='$cursoDestinatario'";
     }
 
     $ejecutar = mysqli_query($conexion, $query);
