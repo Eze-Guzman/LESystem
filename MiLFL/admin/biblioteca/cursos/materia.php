@@ -24,8 +24,43 @@
     define("ROL_PRECEPTOR", 5);
 
     $rol = 0;
+    $materias = array();
 
-    if (isset($_SESSION['alumnos'])) {
+    if (isset($_SESSION['administradores'])) {
+        $rol = ROL_ADMINISTRADOR;
+    }
+
+    else if (isset($_SESSION['profesores'])) {
+        $dni = $_SESSION['profesores'];
+        $query_profesor_id = mysqli_query($conexion, "SELECT id FROM profesores WHERE dni='$dni'");
+        $profesor_id_array = mysqli_fetch_array($query_profesor_id);
+        $profesor_id = $profesor_id_array[0];
+
+        $query_materia = mysqli_query($conexion, "SELECT id FROM materias WHERE profesor_id='$profesor_id'");
+        $cantidad_materias = mysqli_num_rows($query_materia);
+
+        $indice = 0;
+
+        // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
+        for ($i = 0; $i < $cantidad_materias; $i++) {
+            $materia_array = mysqli_fetch_array($query_materia);
+            $materia_id = $materia_array[0];
+
+            if (!in_array($materia_id, $materias)) {
+                $materias[$indice] = $materia_id;
+                $indice++;
+            }  
+        }
+
+        // Comprueba si la materia corresponde a sus materias asignadas.
+        if (!in_array($id_materia, $materias)) {
+            header("Location:../elegir-cursos.php");
+        }
+
+        $rol = ROL_PROFESOR;
+    }
+
+    else if (isset($_SESSION['alumnos'])) {
 
         $dni = $_SESSION['alumnos'];
 
@@ -48,6 +83,71 @@
 
     }
 
+    else if (isset($_SESSION['directivo'])) {
+        $rol = ROL_DIRECTIVO;
+    }
+
+    else if (isset($_SESSION['preceptores'])) {
+
+        $dni = $_SESSION['preceptores'];
+        $query_preceptor_id = mysqli_query($conexion, "SELECT id FROM preceptores WHERE dni='$dni'");
+        $preceptor_id_array = mysqli_fetch_array($query_preceptor_id);
+        $preceptor_id = $preceptor_id_array[0];
+
+        $query_curso = mysqli_query($conexion, "SELECT idcurso FROM curso WHERE preceptor_id='$preceptor_id'");
+        $cantidad_cursos = mysqli_num_rows($query_curso);
+        $cursos = array();
+            
+        $indice = 0;
+
+        // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
+        for ($i = 0; $i < $cantidad_cursos; $i++) {
+            $curso_array = mysqli_fetch_array($query_curso);
+            $curso_id = $curso_array[0];
+
+            if (!in_array($curso_id, $cursos)) {
+                $cursos[$indice] = $curso_id;
+                $indice++;
+                  
+            }
+
+            $query_materia = mysqli_query($conexion, "SELECT id FROM materias WHERE curso_id='$cursos[$i]'");
+            $cantidad_materias = mysqli_num_rows($query_materia);
+
+            $indice2 = 0;
+
+            // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
+            for ($i = 0; $i < $cantidad_materias; $i++) {
+                $materia_array = mysqli_fetch_array($query_materia);
+                $materia_id = $materia_array[0];
+
+                if (!in_array($materia_id, $materias)) {
+                    $materias[$indice2] = $materia_id;
+                    $indice2++;
+                }  
+            }
+
+            // Comprueba si la materia corresponde a sus materias asignadas.
+            if (!in_array($id_materia, $materias)) {
+                header("Location:../elegir-cursos.php");
+            }
+
+        }
+
+        $rol = ROL_PRECEPTOR;
+    }
+    
+    else {
+        echo '
+            <script>
+                alert("Por favor, inicia sesión");
+                window.location = "../../../index.php";
+            </script>
+        ';
+        session_destroy();
+        die();
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +160,7 @@
     <link rel="icon" href="../../../assets/img/logo.png">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/general-style.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/style-materia.css?dhvffr">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style-materia.css?ddfddfhvffr">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/41b6154676.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -123,7 +223,7 @@
         </section>
 
         <?php 
-            if ($rol != ROL_ALUMNO) { 
+            if ($rol == ROL_PROFESOR || $rol == ROL_ADMINISTRADOR) { 
         ?>
             
         <section class="subir-archivos">
@@ -156,7 +256,7 @@
                     <td class="archivos__data">Descargar</td>
 
                 <?php 
-                    if ($rol != ROL_ALUMNO) { 
+                    if ($rol == ROL_PROFESOR || $rol == ROL_DIRECTIVO || $rol == ROL_ADMINISTRADOR) { 
                 ?>
                     <td class="archivos__data">Eliminar</td>
                 <?php 
@@ -180,14 +280,17 @@
 
                         <a href="#"
                            class="archivos__link archivos__link--visualizar"
-                           id="<?php echo $data['id_archivo'] ?>">
+                           id="<?php echo $data['id_archivo'] ?>"
+                           title="Visualizar">
                             <i class="fa-solid fa-eye"></i>
                         </a>
 
                     <?php
                         } else {
                     ?>
-                        <a href="#" class="archivos__link archivos__link--disabled">
+                        <a href="#"
+                           class="archivos__link archivos__link--disabled"
+                           title="Este archivo no se puede visualizar">
                             <i class="fa-solid fa-eye-slash"></i>
                         </a>
                     <?php
@@ -198,17 +301,19 @@
                     <td class="archivos__data">
                         <a href="../archivos/<?php echo $data['nombre'] ?>"
                            download
-                           class="archivos__link archivos__link--descargar">
+                           class="archivos__link archivos__link--descargar"
+                           title="Descargar">
                             <i class="fa-solid fa-download"></i>
                         </a>
                     </td>
 
                     <?php
-                        if ($rol != ROL_ALUMNO) { 
+                        if ($rol == ROL_PROFESOR || $rol == ROL_DIRECTIVO || $rol == ROL_ADMINISTRADOR) { 
                     ?>
                     <td class="archivos__data">
                         <a href="../eliminar-archivo.php?id=<?php echo $data['id_archivo'] ?>&id_materia=<?php echo $id_materia ?>"
-                           class="archivos__link archivos__link--eliminar link_delete">
+                           class="archivos__link archivos__link--eliminar link_delete"
+                           title="Eliminar">
                             <i class="fa-solid fa-trash-can"></i>
                         </a>
                     </td>

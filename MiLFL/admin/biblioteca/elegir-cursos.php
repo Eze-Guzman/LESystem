@@ -4,14 +4,47 @@
 
     include '../../assets/php/conexion_bd.php';
 
+    define("ROL_ADMINISTRADOR", 1);
+    define("ROL_PROFESOR", 2);
+    define("ROL_ALUMNO", 3);
+    define("ROL_DIRECTIVO", 4);
+    define("ROL_PRECEPTOR", 5);
+
+    $rol = 0;
+
     $curso = 0;
+    $cursos = array();
 
     if (!isset($_SESSION['administradores']) &&
-        !isset($_SESSION['profesores']) &&
-        !isset($_SESSION['directivo']) &&
-        !isset($_SESSION['preceptores'])) {
+        !isset($_SESSION['directivo'])) {
+
+        if (isset($_SESSION['profesores'])) {
+
+            $dni = $_SESSION['profesores'];
+            $query_profesor_id = mysqli_query($conexion, "SELECT id FROM profesores WHERE dni='$dni'");
+            $profesor_id_array = mysqli_fetch_array($query_profesor_id);
+            $profesor_id = $profesor_id_array[0];
+
+            $query_curso = mysqli_query($conexion, "SELECT curso_id FROM materias WHERE profesor_id='$profesor_id'");
+            $cantidad_cursos = mysqli_num_rows($query_curso);
+            
+            $indice = 0;
+
+            // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
+            for ($i = 0; $i < $cantidad_cursos; $i++) {
+                $curso_array = mysqli_fetch_array($query_curso);
+                $curso_id = $curso_array[0];
+
+                if (!in_array($curso_id, $cursos)) {
+                    $cursos[$indice] = $curso_id;
+                    $indice++;
+                }  
+            }
+
+            $rol = ROL_PROFESOR;
+        }
         
-        if (isset($_SESSION['alumnos'])) {
+        else if (isset($_SESSION['alumnos'])) {
 
             $dni = $_SESSION['alumnos'];
             $query_curso = mysqli_query($conexion, "SELECT curso FROM alumnos WHERE dni='$dni'");
@@ -22,6 +55,33 @@
 
             header("location: cursos/elegir-materias.php?curso='$curso'");
             
+            $rol = ROL_ALUMNO;
+        }
+
+        else if (isset($_SESSION['preceptores'])) {
+
+            $dni = $_SESSION['preceptores'];
+            $query_preceptor_id = mysqli_query($conexion, "SELECT id FROM preceptores WHERE dni='$dni'");
+            $preceptor_id_array = mysqli_fetch_array($query_preceptor_id);
+            $preceptor_id = $preceptor_id_array[0];
+
+            $query_curso = mysqli_query($conexion, "SELECT idcurso FROM curso WHERE preceptor_id='$preceptor_id'");
+            $cantidad_cursos = mysqli_num_rows($query_curso);
+            
+            $indice = 0;
+
+            // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
+            for ($i = 0; $i < $cantidad_cursos; $i++) {
+                $curso_array = mysqli_fetch_array($query_curso);
+                $curso_id = $curso_array[0];
+
+                if (!in_array($curso_id, $cursos)) {
+                    $cursos[$indice] = $curso_id;
+                    $indice++;
+                }  
+            }
+
+            $rol = ROL_PRECEPTOR;
         }
 
         else {
@@ -93,9 +153,6 @@
                     <a class="nav__link" href="../cuaderno/cuaderno.php">CUADERNO DE COMUNICADOS</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="#">BOLETÍN</a>
-                </li>
-                <li class="nav__item">
                     <a class="nav__link" href="#">MI CUENTA</a>
                 </li>
                 <li class="nav__item">
@@ -117,8 +174,25 @@
 
             <div class="cursos__container">
 
-                <?php              
-                    for ($i = 0; $i < 6; $i++) {
+                <?php
+                    if ($rol == ROL_PROFESOR || $rol == ROL_PRECEPTOR) {
+
+                        for ($i = 0; $i < count($cursos); $i++) {
+                ?>
+
+                <a href="cursos/elegir-materias.php?curso=<?php echo $cursos[$i] ?>" class="cursos__link">
+                    <div class="cursos__card">
+                        <img src="../assets/img/School_Isometric.png" alt="" class="cursos__img">
+                        <h3 class="cursos__title"><?php echo $cursos[$i] ?>° Año</h3>
+                    </div>
+                </a>
+
+                <?php
+                        }
+
+                    } else {
+
+                        for ($i = 0; $i < 6; $i++) {
                 ?>
 
                 <a href="cursos/elegir-materias.php?curso=<?php echo $i +1 ?>" class="cursos__link">
@@ -129,6 +203,7 @@
                 </a>
 
                 <?php
+                        }
                     }
                 ?>
 

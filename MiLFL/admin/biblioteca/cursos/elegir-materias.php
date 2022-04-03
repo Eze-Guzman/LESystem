@@ -6,12 +6,51 @@
 
     $curso = $_GET['curso'];
 
+    define("ROL_ADMINISTRADOR", 1);
+    define("ROL_PROFESOR", 2);
+    define("ROL_ALUMNO", 3);
+    define("ROL_DIRECTIVO", 4);
+    define("ROL_PRECEPTOR", 5);
+
+    $rol = 0;
+    $cursos = array();
+    $profesor_id;
+
     if (!isset($_SESSION['administradores']) &&
-        !isset($_SESSION['profesores']) &&
-        !isset($_SESSION['directivo']) &&
-        !isset($_SESSION['preceptores'])) {
+        !isset($_SESSION['directivo'])) {
+
+        if (isset($_SESSION['profesores'])) {
+
+            $dni = $_SESSION['profesores'];
+            $query_profesor_id = mysqli_query($conexion, "SELECT id FROM profesores WHERE dni='$dni'");
+            $profesor_id_array = mysqli_fetch_array($query_profesor_id);
+            $profesor_id = $profesor_id_array[0];
+
+            $query_curso = mysqli_query($conexion, "SELECT curso_id FROM materias WHERE profesor_id='$profesor_id'");
+            $cantidad_cursos = mysqli_num_rows($query_curso);
+
+            $indice = 0;
+
+            // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
+            for ($i = 0; $i < $cantidad_cursos; $i++) {
+                $curso_array = mysqli_fetch_array($query_curso);
+                $curso_id = $curso_array[0];
+
+                if (!in_array($curso_id, $cursos)) {
+                    $cursos[$indice] = $curso_id;
+                    $indice++;
+                }  
+            }
+
+            // Comprueba si el curso en el apartado de elegir materias corresponde a sus cursos asignados.
+            if (!in_array($curso, $cursos)) {
+                header("Location:../elegir-cursos.php");
+            }
+            
+            $rol = ROL_PROFESOR;
+        }
         
-        if (isset($_SESSION['alumnos'])) {
+        else if (isset($_SESSION['alumnos'])) {
 
             $dni = $_SESSION['alumnos'];
             $query_curso = mysqli_query($conexion, "SELECT curso FROM alumnos WHERE dni='$dni'");
@@ -19,6 +58,40 @@
             // Obtiene el curso del alumno tomandolo de la consulta de MySQL.
             $curso_array = mysqli_fetch_array($query_curso);
             $curso = $curso_array[0];
+
+            $rol = ROL_ALUMNO;
+        }
+
+        else if (isset($_SESSION['preceptores'])) {
+
+            $dni = $_SESSION['preceptores'];
+            $query_preceptor_id = mysqli_query($conexion, "SELECT id FROM preceptores WHERE dni='$dni'");
+            $preceptor_id_array = mysqli_fetch_array($query_preceptor_id);
+            $preceptor_id = $preceptor_id_array[0];
+
+            $query_curso = mysqli_query($conexion, "SELECT idcurso FROM curso WHERE preceptor_id='$preceptor_id'");
+            $cantidad_cursos = mysqli_num_rows($query_curso);
+            
+            $indice = 0;
+
+            // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
+            for ($i = 0; $i < $cantidad_cursos; $i++) {
+                $curso_array = mysqli_fetch_array($query_curso);
+                $curso_id = $curso_array[0];
+
+                if (!in_array($curso_id, $cursos)) {
+                    $cursos[$indice] = $curso_id;
+                    $indice++;
+                }  
+            }
+
+            // Comprueba si el curso en el apartado de elegir materias corresponde a sus cursos asignados.
+            if (!in_array($curso, $cursos)) {
+                header("Location:../elegir-cursos.php");
+            }
+
+            $rol = ROL_PRECEPTOR;
+
         }
 
         else {
@@ -109,15 +182,30 @@
 
         <?php
 
+            if ($rol == ROL_PROFESOR) {
+
             $query_materias = mysqli_query($conexion,
+                          "SELECT m.id, m.nombre, m.ruta_img, m.curso_id, p.nombre_completo
+                          FROM materias m
+                          INNER JOIN profesores p
+                          ON m.profesor_id = p.id
+                          WHERE curso_id = '$curso' AND profesor_id = '$profesor_id'");
+
+            $result_materias = mysqli_num_rows($query_materias);
+        
+            } else {
+
+                $query_materias = mysqli_query($conexion,
                           "SELECT m.id, m.nombre, m.ruta_img, m.curso_id, p.nombre_completo
                           FROM materias m
                           INNER JOIN profesores p
                           ON m.profesor_id = p.id
                           WHERE curso_id = '$curso'");
 
-            $result_materias = mysqli_num_rows($query_materias);
-        
+                $result_materias = mysqli_num_rows($query_materias);
+
+            }
+
         ?>
 
         <section class="materias">
