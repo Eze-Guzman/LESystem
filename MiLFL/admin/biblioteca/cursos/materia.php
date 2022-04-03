@@ -16,6 +16,15 @@
     $query_archivos = mysqli_query($conexion, "SELECT * FROM archivos WHERE id_materia='$id_materia'");
     $result_archivos = mysqli_num_rows($query_archivos);
 
+    // Constantes de nombres con los valores de cada rol para facilitar la lectura.
+    define("ROL_ADMINISTRADOR", 1);
+    define("ROL_PROFESOR", 2);
+    define("ROL_ALUMNO", 3);
+    define("ROL_DIRECTIVO", 4);
+    define("ROL_PRECEPTOR", 5);
+
+    $rol = 0;
+
     if (isset($_SESSION['alumnos'])) {
 
         $dni = $_SESSION['alumnos'];
@@ -29,6 +38,8 @@
         $query_curso = mysqli_query($conexion, "SELECT curso FROM alumnos WHERE dni='$dni'");
         $curso_array = mysqli_fetch_array($query_curso);
         $curso = $curso_array[0];
+
+        $rol = ROL_ALUMNO;
 
         //Si el alumno se mete en una materia que no corresponde a su curso, se envia a la pantalla de selección.
         if ($curso != $curso_id) {
@@ -49,9 +60,10 @@
     <link rel="icon" href="../../../assets/img/logo.png">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/general-style.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/style-materia.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/style-materia.css?dhvffr">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/41b6154676.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     
@@ -110,10 +122,29 @@
             <h2 class="titulo__title"><?php echo $nombre_materia ?></h2>
         </section>
 
+        <?php 
+            if ($rol != ROL_ALUMNO) { 
+        ?>
+            
+        <section class="subir-archivos">
+            <a href="#" class="button button--larger subir-archivos__button">
+                <i class="modal-subir__icon fa-solid fa-upload"></i>
+                Subir archivo
+            </a>
+        </section>
+
+        <?php 
+            }
+        ?>
+
+        
+
         <section class="archivos">
 
             <?php
                 if ($result_archivos > 0) {
+
+                    $extensionesValidas = array('png', 'jpg', 'jpeg', 'svg', 'pdf', 'mp3', 'wav' ,'mp4');
             ?>
 
             <table class="archivos__table">
@@ -123,7 +154,14 @@
                     <td class="archivos__data">Tipo de archivo</td>
                     <td class="archivos__data">Visualizar</td>
                     <td class="archivos__data">Descargar</td>
+
+                <?php 
+                    if ($rol != ROL_ALUMNO) { 
+                ?>
                     <td class="archivos__data">Eliminar</td>
+                <?php 
+                    }
+                ?>
                 </tr>
 
                 <?php
@@ -136,15 +174,26 @@
                     <td class="archivos__data"><?php echo $data['tipo'] ?></td>
                     <td class="archivos__data">
 
-                        <!--
-                            * Este <a> de abajo es el boton de visualizar. La idea de esto es que cada <a> (o algo relacionado)
-                            * guarde el $data['id_archivo'], para que cuando lo clickees, envie el id_archivo a la función
-                            * "obtenerArchivo()", y que esta cree la etiqueta correspondiente para el modal.  
-                        -->
+                    <?php
+                        if (in_array($data['tipo'], $extensionesValidas)) {
+                    ?>
 
-                        <a href="#" class="archivos__link archivos__link--visualizar">
+                        <a href="#"
+                           class="archivos__link archivos__link--visualizar"
+                           id="<?php echo $data['id_archivo'] ?>">
                             <i class="fa-solid fa-eye"></i>
                         </a>
+
+                    <?php
+                        } else {
+                    ?>
+                        <a href="#" class="archivos__link archivos__link--disabled">
+                            <i class="fa-solid fa-eye-slash"></i>
+                        </a>
+                    <?php
+                        }
+                    ?>
+
                     </td>
                     <td class="archivos__data">
                         <a href="../archivos/<?php echo $data['nombre'] ?>"
@@ -153,12 +202,20 @@
                             <i class="fa-solid fa-download"></i>
                         </a>
                     </td>
+
+                    <?php
+                        if ($rol != ROL_ALUMNO) { 
+                    ?>
                     <td class="archivos__data">
                         <a href="../eliminar-archivo.php?id=<?php echo $data['id_archivo'] ?>&id_materia=<?php echo $id_materia ?>"
                            class="archivos__link archivos__link--eliminar link_delete">
                             <i class="fa-solid fa-trash-can"></i>
                         </a>
                     </td>
+                    <?php
+                        }
+                    ?>
+
                 </tr>
 
                 <?php
@@ -179,22 +236,35 @@
             ?>
 
         </section>
+        
+        <section class="modal-subir">
+
+            <div class="modal-subir__background"></div>
+
+            <div class="modal-subir__container">
+
+                <img src="../../assets/img/carpeta.png" alt="" class="modal-subir__img">
+
+                <form action="../agregarArchivo.php?id_materia=<?php echo $id_materia ?>"
+                      method="POST" enctype="multipart/form-data" class="modal-subir__form">
+
+                    <input class="modal-subir__input" type="file" name="archivos" id="archivos" required>
+                    <input class="button button--larger" type="submit" value="Subir Archivo">
+                </form>
+
+            </div>
+
+            <div href="#" class="modal-subir__close-button">
+                    <i class="modal-subir__icon fa-solid fa-xmark"></i>
+            </div>
+
+        </section>
 
         <section class="modal">
 
             <div class="modal__background"></div>
 
-            <div class="modal__container">
-
-                <?php
-                    /* 
-                     * obtenerArchivo() agarra el id_archivo de un archivo y crea una etiqueta correspondiente a su extensión.
-                     * El id_archivo 12 es de una imagen.
-                     */
-                    echo obtenerArchivo(12);
-                ?>
-
-            </div>
+            <div class="modal__container"></div>
 
             <div href="#" class="modal__close-button">
                     <i class="modal__icon fa-solid fa-xmark"></i>
@@ -206,7 +276,9 @@
 
     <script src="../../../assets/js/loader.js"></script>
     <script src="../../../assets/js/nav-responsive.js"></script>
-    <script src="../../assets/js/modal-previsualizar.js"></script>
+    <script src="../../assets/js/modal-previsualizar.js?v1"></script>
+    <script src="../../assets/js/modal-subir.js?1v"></script>
+    <script src="../../assets/js/verId.js"></script>
     <script src="../../assets/js/eliminacion.js"></script>
 </body>
 </html>
