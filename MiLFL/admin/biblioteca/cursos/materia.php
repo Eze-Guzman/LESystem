@@ -7,6 +7,15 @@
 
     $id_materia = $_GET['id_materia'];
 
+    // Obtiene todas las materias y las cuenta.
+    $query_total_materias = mysqli_query($conexion, "SELECT id FROM materias");
+    $cantidad_total_materias = mysqli_num_rows($query_total_materias);
+
+    // Si se ingresa un id_materia que no existe, se redirige a elegir-cursos.php.
+    if ($id_materia > $cantidad_total_materias || $id_materia < 1) {
+        header("Location:../elegir-cursos.php");
+    }
+
     //Obtenemos el nombre de la materia.
     $query_materia = mysqli_query($conexion, "SELECT nombre FROM materias WHERE id='$id_materia'");
     $materia_array = mysqli_fetch_array($query_materia);
