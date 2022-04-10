@@ -31,11 +31,15 @@
     }
 
     else if (isset($_SESSION['profesores'])) {
+
         $dni = $_SESSION['profesores'];
+
+        //Obtenemos el campo "profesor_id" de la tabla de profesores.
         $query_profesor_id = mysqli_query($conexion, "SELECT id FROM profesores WHERE dni='$dni'");
         $profesor_id_array = mysqli_fetch_array($query_profesor_id);
         $profesor_id = $profesor_id_array[0];
 
+        //Obtiene las materias que dicho profesor tiene asignado y las cuenta.
         $query_materia = mysqli_query($conexion, "SELECT id FROM materias WHERE profesor_id='$profesor_id'");
         $cantidad_materias = mysqli_num_rows($query_materia);
 
@@ -44,12 +48,7 @@
         // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
         for ($i = 0; $i < $cantidad_materias; $i++) {
             $materia_array = mysqli_fetch_array($query_materia);
-            $materia_id = $materia_array[0];
-
-            if (!in_array($materia_id, $materias)) {
-                $materias[$indice] = $materia_id;
-                $indice++;
-            }  
+            $materias[$i] = $materia_array[0];
         }
 
         // Comprueba si la materia corresponde a sus materias asignadas.
@@ -90,48 +89,56 @@
     else if (isset($_SESSION['preceptores'])) {
 
         $dni = $_SESSION['preceptores'];
+        //Obtenemos el campo "preceptor_id" de la tabla de preceptores.
         $query_preceptor_id = mysqli_query($conexion, "SELECT id FROM preceptores WHERE dni='$dni'");
         $preceptor_id_array = mysqli_fetch_array($query_preceptor_id);
         $preceptor_id = $preceptor_id_array[0];
 
+        //Obtiene los cursos que dicho preceptor tiene asignado y los cuenta.
         $query_curso = mysqli_query($conexion, "SELECT idcurso FROM curso WHERE preceptor_id='$preceptor_id'");
         $cantidad_cursos = mysqli_num_rows($query_curso);
+
         $cursos = array();
+
+        // Cambiara en torno a si el de la materia a la que se quiere acceder esta entre sus materias.
+        $puede_acceder = true;
             
         $indice = 0;
 
-        // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
+        // Obtiene todos los cursos en donde haya materias con dicho preceptor asignado.
         for ($i = 0; $i < $cantidad_cursos; $i++) {
             $curso_array = mysqli_fetch_array($query_curso);
-            $curso_id = $curso_array[0];
 
-            if (!in_array($curso_id, $cursos)) {
-                $cursos[$indice] = $curso_id;
-                $indice++;
-                  
+            if (!in_array($curso_array[0], $cursos)) {
+                $cursos[$indice] = $curso_array[0];
+                $indice++;       
             }
+
+        }
+
+        for($i = 0; $i < count($cursos); $i++) {
 
             $query_materia = mysqli_query($conexion, "SELECT id FROM materias WHERE curso_id='$cursos[$i]'");
             $cantidad_materias = mysqli_num_rows($query_materia);
 
-            $indice2 = 0;
-
-            // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
-            for ($i = 0; $i < $cantidad_materias; $i++) {
+            // Rellena el array de materias con todas las materias asignadas a dicho curso.
+            for ($j = 0; $j < $cantidad_materias; $j++) {
                 $materia_array = mysqli_fetch_array($query_materia);
-                $materia_id = $materia_array[0];
+                $materias[$j] = $materia_array[0];
+            }    
 
-                if (!in_array($materia_id, $materias)) {
-                    $materias[$indice2] = $materia_id;
-                    $indice2++;
-                }  
+            // Comprueba si la materia corresponde a sus materias en cursos asignados.
+            if (in_array($id_materia, $materias)) {
+                $puede_acceder = true;
+                break;
+            } else {
+                $puede_acceder = false;
             }
 
-            // Comprueba si la materia corresponde a sus materias asignadas.
-            if (!in_array($id_materia, $materias)) {
-                header("Location:../elegir-cursos.php");
-            }
-
+        }
+        
+        if (!$puede_acceder) {
+            header("Location:../elegir-cursos.php");
         }
 
         $rol = ROL_PRECEPTOR;
