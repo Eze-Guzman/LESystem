@@ -132,9 +132,19 @@
                 <li class="nav__item">
                     <a class="nav__link" href="admin/biblioteca/elegir-cursos.php">BIBLIOTECA</a>
                 </li>
+
+                <?php
+                    if ($rol != ROL_PROFESOR) {
+                ?>
+
                 <li class="nav__item">
                     <a class="nav__link" href="admin/cuaderno/cuaderno.php">CUADERNO DE COMUNICADOS</a>
                 </li>
+
+                <?php
+                    }
+                ?>
+
                 <li class="nav__item">
                     <a class="nav__link" href="#">MI CUENTA</a>
                 </li>
@@ -150,7 +160,7 @@
     <main class="main">
 
         <section class="titulo">
-            <h2 class="titulo__title">Bienvenido/a, <?php echo $nombre_completo ?></h2>
+            <h2 class="titulo__title">Bienvenido/a <?php echo $nombre_completo ?></h2>
         </section>
         
         <section class="funciones">
@@ -159,18 +169,71 @@
                 <div class="funciones__card">
                     <img src="assets/img/Files And Folder_Isometric.png" alt="" class="funciones__img">
                     <h3 class="funciones__title">Biblioteca</h3>
+
                     <p class="funciones__text">
-                        En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que te envien tus docentes para utilizar en las clases.
+
+                    <?php
+                        if ($rol == ROL_ADMINISTRADOR ||
+                            $rol == ROL_DIRECTIVO ||
+                            $rol == ROL_PRECEPTOR)
+                            echo "En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que suban los profesores para utilizar en sus clases.";
+                        else if ($rol == ROL_PROFESOR)
+                            echo "En la biblioteca podes subir el material didáctico que utilices en tus clases para que tus alumnos puedan acceder a el.";
+                        else if ($rol == ROL_ALUMNO)
+                            echo "En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que te envien tus docentes para utilizar en las clases.";
+                    ?>
+                        
                     </p>
                 </div>
             </a>
+
+            <?php
+                if ($rol != ROL_PROFESOR) {
+            ?>
             
             <a href="admin/cuaderno/cuaderno.php" class="funciones__link">
                 <div class="funciones__card">
                     <img src="assets/img/New Message_Isometric.png" alt="" class="funciones__img">
                     <h3 class="funciones__title">Cuaderno de comunicados</h3>
                     <p class="funciones__text">
-                        En el cuaderno de comunicados podes ver los anuncios que publiquen tus profesores o preceptores.
+
+                    <?php
+                        if ($rol == ROL_ALUMNO)
+                            echo "En el cuaderno de comunicados podes ver los anuncios que publiquen tus profesores o preceptores.";
+                        else
+                            echo "En el cuaderno de comunicados podes hacer anuncios para que los alumnos los lean.";
+                    ?>
+                        
+                    </p>
+                </div>
+            </a>
+
+            <?php
+                }
+
+                if ($rol == ROL_ADMINISTRADOR) {
+            ?>
+
+            <a href="admin/agregar_mod_usuarios.php" class="funciones__link">
+                <div class="funciones__card">
+                    <img src="assets/img/User Status_Isometric.png" alt="" class="funciones__img">
+                    <h3 class="funciones__title">Añadir o modificar usuarios</h3>
+                    <p class="funciones__text">
+                        En este apartado podes añadir, modificar y eliminar usuarios de la base de datos MySQL.
+                    </p>
+                </div>
+            </a>
+
+            <?php
+                }
+            ?>
+
+            <a href="#" class="funciones__link">
+                <div class="funciones__card">
+                    <img src="assets/img/User Profile_Isometric.png" alt="" class="funciones__img">
+                    <h3 class="funciones__title">Mi cuenta</h3>
+                    <p class="funciones__text">
+                        En este apartado podes configurar parametros de tu cuenta como tu nombre, tu contraseña, tu DNI, o tu E-Mail.
                     </p>
                 </div>
             </a>
@@ -181,53 +244,12 @@
     
     <script src="assets/js/loader.js"></script>
     <script src="assets/js/nav-responsive.js"></script>
-    <script src="assets/js/crear-cards.js"></script>
 </body>
 </html>
 
 <?php
 
-    if($rol == ROL_ADMINISTRADOR) {
-
-        echo '
-            <script>
-
-                modificarCardText(0,
-                "En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que suban los profesores para utilizar en sus clases.",
-                "funciones");
-
-                modificarCardText(1,
-                "En el cuaderno de comunicados podes hacer anuncios para que los alumnos los lean.",
-                "funciones");
-
-                crearCard("admin/agregar_mod_usuarios.php",
-                "assets/img/User Status_Isometric.png",
-                "Añadir o modificar usuarios",
-                "En este apartado podes añadir, modificar y eliminar usuarios de la base de datos MySQL.",
-                "funciones");
-
-            </script>
-        ';
-    }
-
-    else if($rol == ROL_PROFESOR) {
-
-        echo '
-            <script>
-
-                modificarCardText(0,
-                "En la biblioteca podes subir el material didáctico que utilices en tus clases para que tus alumnos puedan acceder a el.",
-                "funciones");
-
-                modificarCardText(1,
-                "En el cuaderno de comunicados podes hacer anuncios para que tus alumnos los lean.",
-                "funciones");
-
-            </script>
-        ';
-    }
-
-    else if($rol == ROL_ALUMNO) {
+    if($rol == ROL_ALUMNO) {
 
         if ($msg_no_leidos > 0) {
 
@@ -246,53 +268,5 @@
 
         }
     }
-
-    else if($rol == ROL_DIRECTIVO) {
-
-        echo '
-            <script>
-
-                modificarCardText(0,
-                "En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que suban los profesores para utilizar en sus clases.",
-                "funciones");
-
-                modificarCardText(1,
-                "En el cuaderno de comunicados podes hacer anuncios para que los alumnos los lean.",
-                "funciones");
-
-            </script>
-        ';
-    }
-
-    else if($rol == ROL_PRECEPTOR) {
-
-        echo '
-            <script>
-
-                modificarCardText(0,
-                "En la biblioteca podes encontrar todo el material didáctico (ordenado por materias) que suban los profesores para utilizar en sus clases.",
-                "funciones");
-
-                modificarCardText(1,
-                "En el cuaderno de comunicados podes hacer anuncios para que tus alumnos los lean.",
-                "funciones");
-
-            </script>
-        ';
-    }
-
-    // Añade siempre al final la card de "Mi cuenta".
-
-    echo '
-            <script>
-
-                crearCard("#",
-                "assets/img/User Profile_Isometric.png",
-                "Mi cuenta",
-                "En este apartado podes configurar parametros de tu cuenta como tu nombre, tu contraseña, o tu foto de perfil.",
-                "funciones");
-
-            </script>
-        ';
 
 ?>

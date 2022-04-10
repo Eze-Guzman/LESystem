@@ -11,6 +11,7 @@
     define("ROL_PRECEPTOR", 5);
 
     $curso = 0;
+    $cursos = array();
     $rol;
 
     /*
@@ -29,9 +30,7 @@
     }
 
     else if(isset($_SESSION['profesores'])) {
-        $dni = $_SESSION['profesores'];
-        $query_nombre = mysqli_query($conexion, "SELECT nombre_completo FROM profesores WHERE dni='$dni'");
-        $rol = ROL_PROFESOR;
+        header("Location:../../inicio.php");
     }
         
 
@@ -60,8 +59,8 @@
 
     else if(isset($_SESSION['preceptores'])) {
         $dni = $_SESSION['preceptores'];
-        $rol = ROL_PRECEPTOR;
         $query_nombre = mysqli_query($conexion, "SELECT nombre_completo FROM preceptores WHERE dni='$dni'");
+        $rol = ROL_PRECEPTOR;
     }
     
     else {
@@ -185,17 +184,12 @@
                     <option value="4">4° año</option>
                     <option value="5">5° año</option>
                     <option value="6">6° año</option>
-
-                    <?php
-                        if ($rol == ROL_ADMINISTRADOR || $rol == ROL_DIRECTIVO) {
-                    ?>
                     <option value="7">Enviar a todos los cursos</option>
-                    <?php
-                        }
-                    ?>
+
 
                 </select>
                 <input type="hidden" name="nombre-usuario" value="<?php echo $nombre_completo ?>">
+                <input type="hidden" name="dni-usuario" value="<?php echo $dni ?>">
                 <input type="hidden" name="fecha-actual" value="<?php echo $fecha ?>">
 
                 <input class="publicar__form-button button" type="submit" value="Publicar">
@@ -246,20 +240,20 @@
                     <h3 class="publicaciones__remitente">Enviado por: <?php echo $filas[$i][1]; ?></h3>
 
                     <p class="publicaciones__contenido">
-                        <?php echo $filas[$i][2]; ?>
+                        <?php echo $filas[$i][3]; ?>
                     </p>
 
                     <p class="publicaciones__fecha">
                         Publicado el: <?php 
-                                        $originalDate = $filas[$i][3];
+                                        $originalDate = $filas[$i][4];
                                         $newDate = date("d/m/Y", strtotime($originalDate));
                                         echo $newDate;
                                       ?>
                     </p>
     
                     <?php
-                        // Si sos alumno no podes borrar publicaciones.
-                        if ($rol != ROL_ALUMNO) {
+                        // Si tu dni es el mismo de quien publico la publicación, o sos administrador o directivo, podes borrarlas.
+                        if ($dni == $filas[$i][2] || $rol == ROL_ADMINISTRADOR || $rol == ROL_DIRECTIVO) {
                     ?>
 
                     <a href="procesos/eliminar-publicaciones.php?id=<?php echo $filas[$i][0]; ?>"

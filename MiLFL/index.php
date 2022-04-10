@@ -116,7 +116,7 @@
 
             <ul class="nav__options-bar">
                 <li class="nav__item">
-                    <a class="nav__link" href="index.html">INICIO DE SESIÓN</a>
+                    <a class="nav__link" href="index.php">INICIO DE SESIÓN</a>
                 </li>
                 <li class="nav__item">
                     <a class="nav__link" href="#informacion">¿QUÉ ES MILFL?</a>

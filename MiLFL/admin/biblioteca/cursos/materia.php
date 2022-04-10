@@ -98,6 +98,7 @@
     else if (isset($_SESSION['preceptores'])) {
 
         $dni = $_SESSION['preceptores'];
+        
         //Obtenemos el campo "preceptor_id" de la tabla de preceptores.
         $query_preceptor_id = mysqli_query($conexion, "SELECT id FROM preceptores WHERE dni='$dni'");
         $preceptor_id_array = mysqli_fetch_array($query_preceptor_id);

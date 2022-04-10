@@ -21,22 +21,24 @@
         if (isset($_SESSION['profesores'])) {
 
             $dni = $_SESSION['profesores'];
+
+            //Obtenemos el campo "profesor_id" de la tabla de profesores.
             $query_profesor_id = mysqli_query($conexion, "SELECT id FROM profesores WHERE dni='$dni'");
             $profesor_id_array = mysqli_fetch_array($query_profesor_id);
             $profesor_id = $profesor_id_array[0];
 
+            //Obtiene los cursos que dicho profesor tiene asignado y las cuenta.
             $query_curso = mysqli_query($conexion, "SELECT curso_id FROM materias WHERE profesor_id='$profesor_id'");
             $cantidad_cursos = mysqli_num_rows($query_curso);
             
             $indice = 0;
 
-            // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
+            // Rellena el array de cursos con los cursos asignados a dicho profesor.
             for ($i = 0; $i < $cantidad_cursos; $i++) {
                 $curso_array = mysqli_fetch_array($query_curso);
-                $curso_id = $curso_array[0];
 
-                if (!in_array($curso_id, $cursos)) {
-                    $cursos[$indice] = $curso_id;
+                if (!in_array($curso_array[0], $cursos)) {
+                    $cursos[$indice] = $curso_array[0];
                     $indice++;
                 }  
             }
@@ -61,24 +63,20 @@
         else if (isset($_SESSION['preceptores'])) {
 
             $dni = $_SESSION['preceptores'];
+
+            //Obtenemos el campo "preceptor_id" de la tabla de preceptores.
             $query_preceptor_id = mysqli_query($conexion, "SELECT id FROM preceptores WHERE dni='$dni'");
             $preceptor_id_array = mysqli_fetch_array($query_preceptor_id);
             $preceptor_id = $preceptor_id_array[0];
 
+            //Obtiene los cursos que dicho preceptor tiene asignado y los cuenta.
             $query_curso = mysqli_query($conexion, "SELECT idcurso FROM curso WHERE preceptor_id='$preceptor_id'");
             $cantidad_cursos = mysqli_num_rows($query_curso);
-            
-            $indice = 0;
 
-            // Obtiene todos los cursos en donde haya materias con dicho profesor asignado.
+            // Rellena el array de cursos con los cursos asignados a dicho preceptor.
             for ($i = 0; $i < $cantidad_cursos; $i++) {
                 $curso_array = mysqli_fetch_array($query_curso);
-                $curso_id = $curso_array[0];
-
-                if (!in_array($curso_id, $cursos)) {
-                    $cursos[$indice] = $curso_id;
-                    $indice++;
-                }  
+                $cursos[$i] = $curso_array[0];
             }
 
             $rol = ROL_PRECEPTOR;
