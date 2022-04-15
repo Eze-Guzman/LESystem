@@ -23,13 +23,14 @@
     <link rel="icon" href="assets/img/logo.png">
     <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="assets/css/general-style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style-index.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style-index.css?3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
     <script src="https://kit.fontawesome.com/41b6154676.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
@@ -172,7 +173,7 @@
 
             </form>
 
-            <a href="#" class="login__forgot-password">¿Olvidaste tus datos?</a>
+            <a href="#" class="login__forgot-password">¿Olvidaste tu contraseña?</a>
 
         </div>
 
@@ -282,12 +283,13 @@
         <div class="modal-cuenta__container">
 
             <h2 class="modal-cuenta__title">Recuperación de cuenta</h2>
-            <p class="modal-cuenta__text">Ingresa tu DNI para que podamos identificar tu cuenta, luego ingresa tu E-mail para poder enviarte un mail de recuperación.</p>
+            <p class="modal-cuenta__text">
+                Ingresa tu DNI para que podamos identificar tu cuenta, luego te enviaremos un mail con un código de recuperación al E-Mail asociado a esa cuenta.
+            </p>
 
-            <form class="modal-cuenta__form" action="">
+            <form class="modal-cuenta__form">
                 
-                <input class="modal-cuenta__form-item" type="text" placeholder="Ingrese su DNI, sin puntos (requerido)" name="dni-recuperacion">
-                <input class="modal-cuenta__form-item" type="text" placeholder="Ingrese un E-mail (requerido)" name="email-recuperacion" id="">
+                <input class="modal-cuenta__form-item" type="text" placeholder="Ingrese su DNI, sin puntos (requerido)" name="dni-recuperacion" required>
                 <input class="modal-cuenta__form-button button button--wider" type="submit" id="close" value="Enviar">
 
             </form>
@@ -295,6 +297,8 @@
             <div href="#" class="modal-cuenta__close-button">
                 <i class="modal-cuenta__icon fas fa-xmark"></i>
             </div>
+
+            <p class="modal-cuenta__mail-text"></p>
 
         </div>
         
@@ -320,6 +324,7 @@
     <script src="assets/js/loader.js"></script>
     <script src="assets/js/nav-responsive.js"></script>
     <script src="assets/js/modal-cuenta.js"></script>
+    <script src="assets/js/enviar-correo.js?3"></script>
     <script src="assets/js/visor-pass.js"></script>
     <script src="assets/js/recordarme.js"></script>
     <script src="assets/js/slider.js"></script>

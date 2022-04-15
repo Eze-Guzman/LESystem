@@ -180,7 +180,6 @@ h2 {
     display: flex;
     flex-direction: column;
     transform: translateY(-100vh);
-    
 
     transition: transform, opacity, 1s;
 }
@@ -206,12 +205,16 @@ h2 {
     text-align: center;
 }
 
-.modal-cuenta__text {
+.modal-cuenta__text,
+.modal-cuenta__mail-text {
     font-size: 1.7rem;
     line-height: 1.3;
-    padding: 3rem 0 1.5rem 0;
     color: var(--color-negro);
+}
+
+.modal-cuenta__text {
     text-align: justify;
+    padding: 3rem 0 1.5rem 0;
 }
 
 .modal-cuenta__form {
@@ -387,6 +390,10 @@ h2 {
 
     .login__form {
         height: 75%;
+    }
+
+    .modal-cuenta__container {
+        overflow-y: scroll;
     }
     
 }
