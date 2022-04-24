@@ -2,7 +2,7 @@
 
     function obtenerArchivo($id_archivo) {
 
-        include "../../../assets/php/conexion_bd.php";
+        include "../../assets/php/conexion_bd.php";
 
         $query_archivo = mysqli_query($conexion, "SELECT tipo, ruta FROM archivos WHERE id_archivo = '$id_archivo'");
         $archivo_data = mysqli_fetch_array($query_archivo);

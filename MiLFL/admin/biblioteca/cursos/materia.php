@@ -400,7 +400,7 @@
     <script src="../../../assets/js/nav-responsive.js"></script>
     <script src="../../assets/js/modal-previsualizar.js?v1"></script>
     <script src="../../assets/js/modal-subir.js?1v"></script>
-    <script src="../../assets/js/verId.js"></script>
+    <script src="../../assets/js/verId.js?1"></script>
     <script src="../../assets/js/eliminacion.js"></script>
 </body>
 </html>

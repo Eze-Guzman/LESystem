@@ -23,7 +23,7 @@
     <link rel="icon" href="assets/img/logo.png">
     <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="assets/css/general-style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style-index.css?6">
+    <link rel="stylesheet" type="text/css" href="assets/css/style-index.css?7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
@@ -196,13 +196,11 @@
                     </b>
                 </p>
                 <p class="informacion__text">
-                    Aquí los docentes pueden subir material didáctico para sus clases, realizar anuncios en el cuaderno de comunicados,
-                    completar los boletín de calificaciones, entre varías funciones más.
+                    Aquí los docentes pueden subir material didáctico para sus clases, realizar anuncios en el cuaderno de comunicados, entre varías funciones más.
                 </p>
                 <p class="informacion__text">
                     Por su parte, los alumnos pueden visualizar los archivos enviados por sus docentes, como también los anuncios
-                    del cuaderno de comunicados, su boletín de calificaciones, e incluso enviar mensajes de consulta para mantener
-                    el contacto con sus docentes.
+                    del cuaderno de comunicados.
                 </p>
 
             </div>
@@ -227,19 +225,22 @@
                 <div class="slider__container" id="slider__container">
 
                     <div class="slider__section">
-                        <img src="assets/img/example-image.jpg" alt="Imagen ilustrativa sobre MiLFL" class="slider__img">
+                        <img src="assets/img/inicio-slider.png" alt="Imagen ilustrativa sobre MiLFL" class="slider__img">
                     </div>
                     <div class="slider__section">
-                        <img src="assets/img/example-image.jpg" alt="Imagen ilustrativa sobre MiLFL" class="slider__img">
+                        <img src="assets/img/cursos-slider.png" alt="Imagen ilustrativa sobre MiLFL" class="slider__img">
                     </div>
                     <div class="slider__section">
-                        <img src="assets/img/example-image.jpg" alt="Imagen ilustrativa sobre MiLFL" class="slider__img">
+                        <img src="assets/img/materia-slider.png" alt="Imagen ilustrativa sobre MiLFL" class="slider__img">
                     </div>
                     <div class="slider__section">
-                        <img src="assets/img/example-image.jpg" alt="Imagen ilustrativa sobre MiLFL" class="slider__img">
+                        <img src="assets/img/archivo-slider.png" alt="Imagen ilustrativa sobre MiLFL" class="slider__img">
                     </div>
                     <div class="slider__section">
-                        <img src="assets/img/example-image.jpg" alt="Imagen ilustrativa sobre MiLFL" class="slider__img">
+                        <img src="assets/img/cuaderno-slider.png" alt="Imagen ilustrativa sobre MiLFL" class="slider__img">
+                    </div>
+                    <div class="slider__section">
+                        <img src="assets/img/cuenta-slider.png" alt="Imagen ilustrativa sobre MiLFL" class="slider__img">
                     </div>
                 </div>
 
