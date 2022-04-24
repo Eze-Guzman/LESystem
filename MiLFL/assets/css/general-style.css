@@ -678,9 +678,16 @@ body {
     
 }
 
-@media screen and (max-width: 313px) {
+@media screen and (max-width: 318px) {
 
     .nav__options-bar--show {
         margin-top: 14.5rem;
+    }
+}
+
+@media screen and (max-width: 299px) {
+
+    .nav__options-bar--show {
+        margin-top: 18rem;
     }
 }

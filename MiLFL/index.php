@@ -157,7 +157,7 @@
                     name="pass" 
                     id="pass"
                     class="login__form-item"
-                    placeholder="Ingrese su Contraseña" 
+                    placeholder="Ingrese su contraseña" 
                     autocomplete="new-password">
 
                 <div>   

@@ -228,7 +228,7 @@
                 }
             ?>
 
-            <a href="#" class="funciones__link">
+            <a href="admin/cuenta/mi-cuenta.php" class="funciones__link">
                 <div class="funciones__card">
                     <img src="assets/img/User Profile_Isometric.png" alt="" class="funciones__img">
                     <h3 class="funciones__title">Mi cuenta</h3>

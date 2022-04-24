@@ -1,0 +1,173 @@
+.titulo__title {
+    font-size: 4.5rem;
+    color: var(--color-naranja-claro);
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.datos {
+    background: var(--color-blanco);
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
+}
+
+.datos__form {
+    display: flex;
+    flex-direction: column;
+    width: 50rem;
+    max-width: 90%;
+}
+
+.datos__label,
+.datos__error {
+    font-size: 1.4rem;
+    margin-bottom: 7px;
+}
+
+.datos__error {
+    font-weight: 700;
+}
+
+.datos__input {
+    background: var(--color-fondo);
+    font-size: 1.7rem;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    transition: background 0.5s;
+}
+
+.datos__input:hover {
+    outline: 1px solid var(--color-naranja-alt);
+}
+
+.datos__label-link {
+    text-decoration: none;
+}
+
+.datos__label-link:hover {
+    text-decoration: underline;
+}
+
+
+/* Diseño realizado para el Modal de Recuperación de Contraseña */
+
+.modal-pass {
+    display: flex;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4750;
+
+    background: #2228;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s 0.3s;
+}
+
+.modal-pass--show {
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity 0.5s;
+}
+
+.modal-pass__background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.modal-pass__container {
+    width: 90%;
+    max-width: 75rem;
+    max-height: 90%;
+    background: var(--color-fondo);
+    opacity: 0;
+
+    margin: auto;
+    padding: 6rem 2.5rem 3rem 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 30px;
+
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-100vh);
+
+    transition: transform, opacity, 1s;
+}
+
+.modal-pass__container--show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform, opacity, 1s;
+}
+
+.modal-pass__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-pass__input {
+    background: var(--color-blanco);
+    padding: 2rem;
+    margin: 1rem 0;
+    border-radius: 1rem;
+    outline: none;
+    border: none;
+    font-size: 1.7rem;
+}
+
+.modal-pass__input:hover {
+    outline: 1px solid var(--color-naranja-alt);
+}
+
+.modal-pass__error {
+    font-size: 1.4rem;
+    margin-bottom: 7px;
+    font-weight: 700;
+}
+
+.modal-pass__button {
+    margin-top: 1.5rem;
+}
+
+.modal-pass__text {
+    font-size: 1.7rem;
+    line-height: 1.3;
+    color: var(--color-negro);
+}
+
+.modal-pass__close-button {
+    color: var(--color-negro);
+
+    padding: 1.5rem 2rem;
+    font-size: 3.5rem;
+    cursor: pointer;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4800;
+
+    transition: opacity 0.3s;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+    .modal-pass__container {
+        overflow-y: scroll;
+    }
+}
