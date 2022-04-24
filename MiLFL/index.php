@@ -23,7 +23,7 @@
     <link rel="icon" href="assets/img/logo.png">
     <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="assets/css/general-style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style-index.css?3">
+    <link rel="stylesheet" type="text/css" href="assets/css/style-index.css?6">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
@@ -317,7 +317,7 @@
             <a class="footer__link" href="#contacto">Contacto</a>
         </div>
         
-        <img class="footer__data-fiscal" src="assets/img/dataFiscal.png" alt="Data fiscal">
+        <img class="footer__data-fiscal" src="assets/img/data-fiscal.png" alt="Data fiscal">
 
     </footer>
 

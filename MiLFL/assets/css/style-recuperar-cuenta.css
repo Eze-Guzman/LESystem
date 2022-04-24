@@ -62,6 +62,14 @@
     color: var(--color-negro);
 }
 
+.cambiar-contrasena__link {
+    text-decoration: none;
+}
+
+.cambiar-contrasena__link:hover {
+    text-decoration: underline;
+}
+
 .validar-codigo__error,
 .cambiar-contrasena__error {
     font-size: 1.4rem;

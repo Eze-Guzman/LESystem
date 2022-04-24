@@ -167,7 +167,7 @@
 
             <a href="admin/biblioteca/elegir-cursos.php" class="funciones__link">
                 <div class="funciones__card">
-                    <img src="assets/img/Files And Folder_Isometric.png" alt="" class="funciones__img">
+                    <img src="assets/img/biblioteca.png" alt="" class="funciones__img">
                     <h3 class="funciones__title">Biblioteca</h3>
 
                     <p class="funciones__text">
@@ -193,7 +193,7 @@
             
             <a href="admin/cuaderno/cuaderno.php" class="funciones__link">
                 <div class="funciones__card">
-                    <img src="assets/img/New Message_Isometric.png" alt="" class="funciones__img">
+                    <img src="assets/img/cuaderno.png" alt="" class="funciones__img">
                     <h3 class="funciones__title">Cuaderno de comunicados</h3>
                     <p class="funciones__text">
 
@@ -216,7 +216,7 @@
 
             <a href="admin/agregar_mod_usuarios.php" class="funciones__link">
                 <div class="funciones__card">
-                    <img src="assets/img/User Status_Isometric.png" alt="" class="funciones__img">
+                    <img src="assets/img/usuarios.png" alt="" class="funciones__img">
                     <h3 class="funciones__title">Añadir o modificar usuarios</h3>
                     <p class="funciones__text">
                         En este apartado podes añadir, modificar y eliminar usuarios de la base de datos MySQL.
@@ -230,7 +230,7 @@
 
             <a href="admin/cuenta/mi-cuenta.php" class="funciones__link">
                 <div class="funciones__card">
-                    <img src="assets/img/User Profile_Isometric.png" alt="" class="funciones__img">
+                    <img src="assets/img/mi-cuenta.png" alt="" class="funciones__img">
                     <h3 class="funciones__title">Mi cuenta</h3>
                     <p class="funciones__text">
                         En este apartado podes configurar parametros de tu cuenta como tu nombre, tu contraseña, tu DNI, o tu E-Mail.

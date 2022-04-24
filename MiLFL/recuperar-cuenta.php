@@ -8,7 +8,7 @@
     <link rel="icon" href="assets/img/logo.png">
     <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="assets/css/general-style.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style-recuperar-cuenta.css?6">
+    <link rel="stylesheet" type="text/css" href="assets/css/style-recuperar-cuenta.css?7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
@@ -89,7 +89,7 @@
             <div class="nav__repsonsive-div">
 
                 <div class="nav__logo">
-                    <a class="nav__logo-link" href="index.html">
+                    <a class="nav__logo-link" href="index.php">
                         <img class="nav__img" src="assets/img/logo.png" alt="Logo del Instituto Luis Federico Leloir, Instituto Luis Federico Leloir">
                         <h1 class="nav__title">Instituto Luis Federico Leloir</h1>
                     </a>
@@ -163,6 +163,7 @@
     </main>
 
     <script src="assets/js/loader.js"></script>
+    <script src="assets/js/nav-responsive.js"></script>
     <script src="assets/js/validar-codigo.js?86"></script>
     <script src="assets/js/cambiar-contrasena.js"></script>
     <script src="assets/js/validar-forms.js"></script>

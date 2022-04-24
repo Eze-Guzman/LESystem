@@ -18,7 +18,7 @@
     $query_cambiar_pass = mysqli_query($conexion, "UPDATE preceptores SET pass='$pass' WHERE dni='$dni'");
 
     if ($query_cambiar_pass)
-        echo 'Contraseña cambiada exitosamente. <a href="index.php">Volver al inicio</a>';
+        echo 'Contraseña cambiada exitosamente. <a href="index.php" class="cambiar-contrasena__link">Volver al inicio</a>';
     else
         echo 'Ocurrio un error al cambiar la contraseña.';
 ?>

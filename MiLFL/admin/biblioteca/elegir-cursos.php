@@ -180,7 +180,7 @@
 
                 <a href="cursos/elegir-materias.php?curso=<?php echo $cursos[$i] ?>" class="cursos__link">
                     <div class="cursos__card">
-                        <img src="../assets/img/School_Isometric.png" alt="" class="cursos__img">
+                        <img src="../assets/img/curso.png" alt="" class="cursos__img">
                         <h3 class="cursos__title"><?php echo $cursos[$i] ?>° Año</h3>
                     </div>
                 </a>

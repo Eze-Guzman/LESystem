@@ -66,9 +66,9 @@
     $mail = mail($destinatario, $asunto, $mensajeCompleto, $header);
 
     if($mail)
-        echo 'Se ha enviado un e-mail a ' . $destinatario . ' con éxito. Ahora solo tenes que <a href="recuperar-cuenta.php">Introducir el código de recuperación</a>';
+        echo 'Se ha enviado un e-mail a ' . $destinatario . ' con éxito. Ahora solo tenes que <a href="recuperar-cuenta.php" class="modal-cuenta__link">Introducir el código de recuperación</a>';
     else
-        echo 'Ocurrió un error en el envío del e-mail. Intenta nuevamente, si esto persiste, comunicate con el equipo de MiLFL vía e-mail en <a href="mailto:soporte@milfl.com">soporte@milfl.com</a>.';
+        echo 'Ocurrió un error en el envío del e-mail. Intenta nuevamente, si esto persiste, comunicate con el equipo de MiLFL vía e-mail en <a href="mailto:soporte@milfl.com" class="modal-cuenta__link">soporte@milfl.com</a>.';
     
 
 ?>
