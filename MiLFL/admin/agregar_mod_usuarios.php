@@ -2,6 +2,35 @@
 
     include "../assets/php/conexion_bd.php";
 
+    session_start();
+        
+    if (!isset($_SESSION['administradores'])) {
+        
+        if (isset($_SESSION['profesores']) ||
+            isset($_SESSION['alumnos']) ||
+            isset($_SESSION['directivo']) ||
+            isset($_SESSION['preceptores'])) {
+
+            echo '
+                <script>
+                    window.location = "../inicio.php";
+                </script>
+            ';
+            die();
+
+        } else {
+
+            echo '
+                <script>
+                    alert("Por favor, inicia sesión");
+                    window.location = "../index.php";
+                </script>
+            ';
+            session_destroy();
+            die();
+        }
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -12,12 +41,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style-usuarios.css">
+    <link rel="stylesheet" href="../assets/css/general-style.css">
     <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
     <title>Agregar o Modificar Usuarios - MiLFL</title>
 </head>
 <body>
+
+    <!--Empieza el header-->
+    <header class="header">
+
+        <!--Nav para navegar por la página-->
+        <nav class="nav">
+
+            <div class="nav__repsonsive-div">
+
+                <div class="nav__logo">
+                    <a class="nav__logo-link" href="inicio.php">
+                        <img class="nav__img" src="../assets/img/logo.png" alt="Logo del Instituto Luis Federico Leloir, Instituto Luis Federico Leloir">
+                        <h1 class="nav__title">Instituto Luis Federico Leloir</h1>
+                    </a>
+                </div>
+
+                <i class="nav__menu-button fas fa-bars" id="menu-button"></i>
+
+            </div>
+
+            <ul class="nav__options-bar">
+                <li class="nav__item">
+                    <a class="nav__link" href="../inicio.php">INICIO</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="biblioteca/elegir-cursos.php">BIBLIOTECA</a>
+                </li>
+
+                <li class="nav__item">
+                    <a class="nav__link" href="cuaderno/cuaderno.php">CUADERNO DE COMUNICADOS</a>
+                </li>
+
+                <li class="nav__item">
+                    <a class="nav__link" href="cuenta/mi-cuenta.php">MI CUENTA</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="../assets/php/cerrar_sesion.php">CERRAR SESIÓN</a>
+                </li>
+            </ul>
+
+        </nav>
+
+    </header>
 
 <!-- Contenedor de Sección "Agregar o Modificar Usuarios" -->
 
@@ -68,10 +141,10 @@
                                 <td><?php echo $data['correo'] ?></td>
                                 <td><?php echo $data['rol'] ?></td>
                                 <td>
-                                    <a href="edicion/editar_administrador.php?id=<?php echo $data["id"]; ?>" 
+                                    <a href="assets/php/editar-usuarios.php?dni=<?php echo $data['dni'] ?>&rol=1" 
                                     class="link_edit">Editar</a>
                                     |
-                                    <a href="assets/php/eliminacion/eliminar_admin.php?id=<?php echo $data['id'] ?>"
+                                    <a href="assets/php/eliminar-usuarios.php?dni=<?php echo $data['dni'] ?>&rol=1"
                                      class="link_delete">Eliminar</a>
                                 </td>
                             </tr>
@@ -100,10 +173,10 @@
                                 <td><?php echo $data['correo'] ?></td>
                                 <td><?php echo $data['rol'] ?></td>
                                 <td>
-                                    <a href="edicion/editar_docente.php?id=<?php echo $data["id"]; ?>" 
+                                    <a href="assets/php/editar-usuarios.php?dni=<?php echo $data['dni'] ?>&rol=2" 
                                     class="link_edit">Editar</a>
                                     |
-                                    <a href="assets/php/eliminacion/eliminar_profesores.php?id=<?php echo $data['id'] ?>"
+                                    <a href="assets/php/eliminar-usuarios.php?dni=<?php echo $data['dni'] ?>&rol=2"
                                      class="link_delete">Eliminar</a>
                                 </td>
                             </tr>
@@ -133,10 +206,10 @@
                                 <td><?php echo $data['correo'] ?></td>
                                 <td><?php echo $data['rol'] ?></td>
                                 <td>
-                                    <a href="edicion/editar_estudiante.php?id=<?php echo $data["id"]; ?>" 
+                                    <a href="assets/php/editar-usuarios.php?dni=<?php echo $data['dni'] ?>&rol=3" 
                                     class="link_edit">Editar</a>
                                     |
-                                    <a href="assets/php/eliminacion/eliminar_alumnos.php?id=<?php echo $data['id'] ?>"
+                                    <a href="assets/php/eliminar-usuarios.php?dni=<?php echo $data['dni'] ?>&rol=3"
                                      class="link_delete">Eliminar</a>
                                 </td>
                             </tr>
@@ -166,10 +239,10 @@
                                 <td><?php echo $data['correo'] ?></td>
                                 <td><?php echo $data['rol'] ?></td>
                                 <td>
-                                    <a href="edicion/editar_directivos.php?id=<?php echo $data["id"]; ?>" 
+                                    <a href="assets/php/editar-usuarios.php?dni=<?php echo $data['dni'] ?>&rol=4" 
                                     class="link_edit">Editar</a>
                                     |
-                                    <a href="assets/php/eliminacion/eliminar_directivos.php?id=<?php echo $data['id'] ?>"
+                                    <a href="assets/php/eliminar-usuarios.php?dni=<?php echo $data['dni'] ?>&rol=4"
                                      class="link_delete">Eliminar</a>
                                 </td>
                             </tr>
@@ -199,10 +272,10 @@
                                 <td><?php echo $data['correo'] ?></td>
                                 <td><?php echo $data['rol'] ?></td>
                                 <td>
-                                    <a href="edicion/editar_prece.php?id=<?php echo $data["id"]; ?>" 
+                                    <a href="assets/php/editar-usuarios.php?dni=<?php echo $data['dni'] ?>&rol=5" 
                                     class="link_edit">Editar</a>
                                     |
-                                    <a href="assets/php/eliminacion/eliminar_preceptores.php?id=<?php echo $data['id'] ?>"
+                                    <a href="assets/php/eliminar-usuarios.php?dni=<?php echo $data['dni'] ?>&rol=5"
                                      class="link_delete">Eliminar</a>
                                 </td>
                             </tr>

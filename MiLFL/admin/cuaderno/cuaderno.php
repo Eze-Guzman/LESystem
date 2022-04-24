@@ -143,7 +143,7 @@
                     <a class="nav__link" href="cuaderno.php">CUADERNO DE COMUNICADOS</a>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="#">MI CUENTA</a>
+                    <a class="nav__link" href="../cuenta/mi-cuenta.php">MI CUENTA</a>
                 </li>
                 <li class="nav__item">
                     <a class="nav__link" href="../../assets/php/cerrar_sesion.php">CERRAR SESIÓN</a>

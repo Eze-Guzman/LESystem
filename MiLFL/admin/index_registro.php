@@ -1,3 +1,36 @@
+<?php
+
+    session_start();
+        
+    if (!isset($_SESSION['administradores'])) {
+        
+        if (isset($_SESSION['profesores']) ||
+            isset($_SESSION['alumnos']) ||
+            isset($_SESSION['directivo']) ||
+            isset($_SESSION['preceptores'])) {
+
+            echo '
+                <script>
+                    window.location = "../inicio.php";
+                </script>
+            ';
+            die();
+
+        } else {
+
+            echo '
+                <script>
+                    alert("Por favor, inicia sesión");
+                    window.location = "../index.php";
+                </script>
+            ';
+            session_destroy();
+            die();
+        }
+
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,16 +52,13 @@
 
         <div class="indice">
 
-            <a href="registros/registro_admin.php">Cuenta de Administrador</a>
-            <a href="registros/registro_directivo.php">Cuenta de Directivo</a>
-            <a href="registros/registro_preceptor.php">Cuenta de Preceptor</a>
-            <a href="registros/registro_profesor.php">Cuenta de Docente</a>
-            <a href="registros/registro_alumnos.php">Cuenta de Estudiante</a>            
+            <a href="registro-usuarios.php?rol=1">Cuenta de Administrador</a>
+            <a href="registro-usuarios.php?rol=2">Cuenta de Profesor</a>
+            <a href="registro-usuarios.php?rol=3">Cuenta de Alumno</a>
+            <a href="registro-usuarios.php?rol=4">Cuenta de Directivo</a>
+            <a href="registro-usuarios.php?rol=5">Cuenta de Preceptor</a>          
 
         </div>
-        
-        
-
     </div>
 
 </body>
